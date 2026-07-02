@@ -1,0 +1,259 @@
+14:52:43.705  connectGateway() called
+14:52:44.159  WebSocket connected (waiting for Hello)
+14:52:44.159  Received Hello, heartbeat_interval=41250ms, sending Identify
+14:52:44.160  Sending Identify (with capabilities flag)
+14:52:46.153  READY received - 38 guilds in payload
+14:52:46.154    guild 1448121905033773268 - unavailable=false, channels=44
+14:52:46.154    guild 1293124957693280297 - unavailable=false, channels=78
+14:52:46.154    guild 1256986994786172939 - unavailable=false, channels=47
+14:52:46.154    guild 281533815824973824 - unavailable=false, channels=66
+14:52:46.155    guild 1255029439746543637 - unavailable=false, channels=76
+14:52:46.155    guild 1364025757814493284 - unavailable=false, channels=90
+14:52:46.156    guild 1023226293258571877 - unavailable=false, channels=52
+14:52:46.156    guild 1264253348937465936 - unavailable=false, channels=5
+14:52:46.156    guild 981424816508792832 - unavailable=false, channels=89
+14:52:46.156    guild 1081222544348168242 - unavailable=false, channels=54
+14:52:46.156    guild 1399626942923411497 - unavailable=false, channels=20
+14:52:46.157    guild 1041963702238318602 - unavailable=false, channels=45
+14:52:46.157    guild 1341256548323692586 - unavailable=false, channels=193
+14:52:46.157    guild 231664689694638081 - unavailable=false, channels=3
+14:52:46.157    guild 1319438038253961276 - unavailable=false, channels=31
+14:52:46.157    guild 1240877872948707400 - unavailable=false, channels=103
+14:52:46.157    guild 850341150266097675 - unavailable=false, channels=86
+14:52:46.158    guild 1263411855343358024 - unavailable=false, channels=53
+14:52:46.158    guild 939936568653799534 - unavailable=false, channels=105
+14:52:46.158    guild 1106267521885151253 - unavailable=false, channels=34
+14:52:46.158    guild 1471852746910208223 - unavailable=false, channels=64
+14:52:46.158    guild 1505670589778759701 - unavailable=false, channels=20
+14:52:46.158    guild 1399694698783703193 - unavailable=false, channels=133
+14:52:46.159    guild 1496001966806138911 - unavailable=false, channels=15
+14:52:46.159    guild 441161241290080256 - unavailable=false, channels=90
+14:52:46.159    guild 1265271912037089312 - unavailable=false, channels=106
+14:52:46.159    guild 891551837650550784 - unavailable=false, channels=115
+14:52:46.159    guild 994528533248491521 - unavailable=false, channels=59
+14:52:46.159    guild 1464986241358631111 - unavailable=false, channels=8
+14:52:46.160    guild 1486481854524817651 - unavailable=false, channels=72
+14:52:46.160    guild 1408201417834893385 - unavailable=false, channels=118
+14:52:46.160    guild 1186592936364871771 - unavailable=false, channels=99
+14:52:46.160    guild 1447691073479770124 - unavailable=false, channels=200
+14:52:46.160    guild 1201403404577153077 - unavailable=false, channels=38
+14:52:46.160    guild 1489375326688772147 - unavailable=false, channels=26
+14:52:46.161    guild 916193307909038141 - unavailable=false, channels=37
+14:52:46.161    guild 697021345434828841 - unavailable=false, channels=141
+14:52:46.161    guild 1130451502213902477 - unavailable=false, channels=32
+14:52:46.161  38 of 38 guilds were immediately available from READY
+14:52:46.167  Dispatch event (ignored): READY_SUPPLEMENTAL
+14:52:46.167  Dispatch event (ignored): SESSIONS_REPLACE
+14:52:48.708  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
+14:52:53.709  Sending Voice State Update - join guild=939936568653799534 channel=1458699005851865183
+14:52:54.027  Dispatch: VOICE_STATE_UPDATE (session_id=7e16d5c6f527018c32f3734a4182512a)
+14:52:54.028  Dispatch event (ignored): VOICE_CHANNEL_START_TIME_UPDATE
+14:52:54.190  Dispatch: VOICE_SERVER_UPDATE (endpoint=c-ams17-024db97c.discord.media:443)
+14:52:54.191  [voice] Connecting to voice gateway: wss://c-ams17-024db97c.discord.media:443/?v=9
+14:52:54.984  [voice] Voice WebSocket connected
+14:52:54.984  [voice] Voice Hello - heartbeat_interval=13750ms, sending Identify
+14:52:54.984  [voice] Sending voice Identify - server_id=939936568653799534, user_id=619161851309195264, session_id=7e16d5c6f527018c32f3734a4182512a, token_length=16
+14:52:55.234  [voice] Voice Ready - ssrc=67607 ip=104.29.153.171 port=19301 modes=[aead_aes256_gcm_rtpsize, aead_xchacha20_poly1305_rtpsize]
+14:52:55.235  [voice] Sending UDP IP discovery packet to 104.29.153.171:19301
+14:52:55.471  [voice] IP discovery response - external address seen as 103.251.210.156:57770
+14:52:55.471  [voice] Selecting voice protocol/mode: aead_xchacha20_poly1305_rtpsize
+14:52:55.723  [voice] Session Description received - mode=aead_xchacha20_poly1305_rtpsize, secret_key=32 bytes
+14:52:55.723  [voice] Voice handshake complete - ready for audio (not yet implemented, Phase B)
+14:52:55.724  [voice] Unhandled voice opcode: 15
+14:52:56.712  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:52:56.857  Dispatch event (ignored): PRESENCE_UPDATE
+14:52:57.714  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:52:58.715  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:52:59.716  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:00.717  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:01.718  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:01.853  Dispatch event (ignored): PASSIVE_UPDATE_V1
+14:53:02.719  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:03.018  Dispatch event (ignored): MESSAGE_REACTION_ADD
+14:53:03.721  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:03.770  Dispatch event (ignored): MESSAGE_REACTION_ADD
+14:53:04.721  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:05.721  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:05.979  Dispatch: VOICE_STATE_UPDATE (session_id=73451c935bbd4d06421effd9ad8822b1)
+14:53:06.723  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:07.726  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:07.889  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:08.725  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:09.538  Dispatch: VOICE_STATE_UPDATE (session_id=73451c935bbd4d06421effd9ad8822b1)
+14:53:09.728  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:10.530  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:10.540  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:10.544  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:11.730  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:12.731  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:13.732  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:14.733  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:15.735  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:16.737  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:17.736  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:18.739  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:19.740  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:20.739  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:21.742  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:22.742  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:23.745  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:24.746  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:25.745  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:26.660  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:26.748  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:27.748  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:28.750  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:29.751  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:30.753  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:31.752  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:32.754  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:33.029  Dispatch event (ignored): PASSIVE_UPDATE_V1
+14:53:33.756  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:34.756  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:35.757  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:36.759  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:37.760  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:38.760  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:39.761  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:40.763  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:41.404  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:41.434  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:41.479  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:41.764  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:42.537  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:42.763  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:43.593  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:43.766  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:43.949  Dispatch event (ignored): PRESENCE_UPDATE
+14:53:44.766  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:45.767  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:46.768  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:47.768  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:48.771  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:49.794  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:50.772  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:51.772  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:52.773  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:53.773  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:54.775  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+14:53:55.776  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:19:57.522  connectGateway() called
+16:19:58.003  WebSocket connected (waiting for Hello)
+16:19:58.003  Received Hello, heartbeat_interval=41250ms, sending Identify
+16:19:58.003  Sending Identify (with capabilities flag)
+16:20:00.238  READY received - 38 guilds in payload
+16:20:00.238    guild 1448121905033773268 - unavailable=false, channels=44
+16:20:00.238    guild 1293124957693280297 - unavailable=false, channels=78
+16:20:00.238    guild 1256986994786172939 - unavailable=false, channels=47
+16:20:00.239    guild 281533815824973824 - unavailable=false, channels=66
+16:20:00.239    guild 1255029439746543637 - unavailable=false, channels=76
+16:20:00.239    guild 1364025757814493284 - unavailable=false, channels=90
+16:20:00.239    guild 1023226293258571877 - unavailable=false, channels=52
+16:20:00.239    guild 1264253348937465936 - unavailable=false, channels=5
+16:20:00.239    guild 981424816508792832 - unavailable=false, channels=89
+16:20:00.240    guild 1081222544348168242 - unavailable=false, channels=54
+16:20:00.240    guild 1399626942923411497 - unavailable=false, channels=20
+16:20:00.240    guild 1041963702238318602 - unavailable=false, channels=45
+16:20:00.240    guild 1341256548323692586 - unavailable=false, channels=193
+16:20:00.240    guild 231664689694638081 - unavailable=false, channels=3
+16:20:00.240    guild 1319438038253961276 - unavailable=false, channels=31
+16:20:00.241    guild 1240877872948707400 - unavailable=false, channels=103
+16:20:00.241    guild 850341150266097675 - unavailable=false, channels=86
+16:20:00.241    guild 1263411855343358024 - unavailable=false, channels=53
+16:20:00.241    guild 939936568653799534 - unavailable=false, channels=103
+16:20:00.241    guild 1106267521885151253 - unavailable=false, channels=34
+16:20:00.242    guild 1471852746910208223 - unavailable=false, channels=64
+16:20:00.242    guild 1505670589778759701 - unavailable=false, channels=20
+16:20:00.242    guild 1399694698783703193 - unavailable=false, channels=138
+16:20:00.242    guild 1496001966806138911 - unavailable=false, channels=15
+16:20:00.242    guild 441161241290080256 - unavailable=false, channels=90
+16:20:00.242    guild 1265271912037089312 - unavailable=false, channels=106
+16:20:00.243    guild 891551837650550784 - unavailable=false, channels=117
+16:20:00.243    guild 994528533248491521 - unavailable=false, channels=59
+16:20:00.243    guild 1464986241358631111 - unavailable=false, channels=8
+16:20:00.243    guild 1486481854524817651 - unavailable=false, channels=72
+16:20:00.243    guild 1408201417834893385 - unavailable=false, channels=118
+16:20:00.243    guild 1186592936364871771 - unavailable=false, channels=99
+16:20:00.244    guild 1447691073479770124 - unavailable=false, channels=201
+16:20:00.244    guild 1201403404577153077 - unavailable=false, channels=38
+16:20:00.244    guild 1489375326688772147 - unavailable=false, channels=26
+16:20:00.244    guild 916193307909038141 - unavailable=false, channels=37
+16:20:00.244    guild 697021345434828841 - unavailable=false, channels=141
+16:20:00.244    guild 1130451502213902477 - unavailable=false, channels=32
+16:20:00.245  38 of 38 guilds were immediately available from READY
+16:20:00.249  Dispatch event (ignored): READY_SUPPLEMENTAL
+16:20:00.249  Dispatch event (ignored): SESSIONS_REPLACE
+16:20:00.513  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
+16:20:02.328  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:02.332  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:02.335  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:02.602  Dispatch event (ignored): CONTENT_INVENTORY_INBOX_STALE
+16:20:02.789  Sending Voice State Update - join guild=939936568653799534 channel=1236957417821044746
+16:20:03.086  Dispatch: VOICE_STATE_UPDATE (session_id=b6c21eef83cfeb56242744213e539036)
+16:20:03.086  Dispatch event (ignored): VOICE_CHANNEL_START_TIME_UPDATE
+16:20:04.001  Dispatch: VOICE_SERVER_UPDATE (endpoint=india11007.discord.media:443)
+16:20:04.002  [voice] Connecting to voice gateway: wss://india11007.discord.media:443/?v=9
+16:20:06.627  Dispatch event (ignored): MESSAGE_UPDATE
+16:20:07.114  [voice] Voice WebSocket connected
+16:20:07.114  [voice] Voice Hello - heartbeat_interval=13750ms, sending Identify
+16:20:07.115  [voice] Sending voice Identify - server_id=939936568653799534, user_id=619161851309195264, session_id=b6c21eef83cfeb56242744213e539036, token_length=16
+16:20:07.118  Dispatch event (ignored): MESSAGE_UPDATE
+16:20:07.121  [voice] Voice Ready - ssrc=60485 ip=35.207.229.15 port=50003 modes=[aead_aes256_gcm_rtpsize, aead_xchacha20_poly1305_rtpsize]
+16:20:07.121  [voice] Sending UDP IP discovery packet to 35.207.229.15:50003
+16:20:07.125  [voice] IP discovery response - external address seen as 103.251.210.156:54031
+16:20:07.125  [voice] Selecting voice protocol/mode: aead_xchacha20_poly1305_rtpsize
+16:20:07.132  [voice] Session Description received - mode=aead_xchacha20_poly1305_rtpsize, secret_key=32 bytes
+16:20:07.132  [voice] Voice handshake complete - ready for audio (not yet implemented, Phase B)
+16:20:07.133  [voice] Unhandled voice opcode: 15
+16:20:08.133  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:09.134  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:10.135  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:11.136  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:11.162  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:12.137  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:13.139  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:14.140  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:14.269  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:15.142  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:15.371  Dispatch event (ignored): CHANNEL_UPDATE
+16:20:16.143  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:17.145  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:18.144  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:19.146  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:20.146  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:21.147  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:21.979  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:22.150  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:24.150  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:25.131  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:25.151  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:26.153  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:26.618  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:26.633  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:26.655  Dispatch event (ignored): PRESENCE_UPDATE
+16:20:27.154  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:28.156  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:29.156  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:31.158  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:32.159  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:34.161  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:35.162  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:36.163  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:36.711  Dispatch: VOICE_STATE_UPDATE (session_id=d395e6028996c8acd6e3652bdf51136b)
+16:20:36.908  Dispatch: VOICE_STATE_UPDATE (session_id=c368939d3f3c9d1ce23ffa779602ec6d)
+16:20:36.908  Dispatch event (ignored): CHANNEL_DELETE
+16:20:37.165  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:38.165  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:39.164  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:40.167  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:41.166  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:42.167  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:43.167  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:44.168  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:45.170  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:46.170  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:47.172  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:48.173  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:49.174  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:50.175  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+16:20:51.176  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
