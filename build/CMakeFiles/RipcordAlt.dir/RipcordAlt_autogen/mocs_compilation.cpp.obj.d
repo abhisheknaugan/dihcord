@@ -1,10 +1,9 @@
 CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj: \
  C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\mocs_compilation.cpp \
- C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_gatewayclient.cpp \
- C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/gatewayclient.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QFile \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qfile.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qfiledevice.h \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_audioengine.cpp \
+ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/audioengine.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSink \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosink.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qiodevice.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qglobal.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/type_traits \
@@ -329,6 +328,33 @@ CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qspan.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cassert \
  C:/Qt/6.11.1/mingw_64/include/QtCore/q20iterator.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/qtguiglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/qtgui-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/qtguiexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiodevice.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtaudio.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudio.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudioformat.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qshareddata.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSource \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosource.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QByteArray \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QIODevice \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QObject \
+ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/equalizer.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qtmochelpers.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qtmocconstants.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/q20algorithm.h \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_gatewayclient.cpp \
+ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/gatewayclient.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QFile \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qfile.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qfiledevice.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/filesystem \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_fwd.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_path.h \
@@ -364,7 +390,6 @@ CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qjsonvalue.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qcborvalue.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qcborcommon.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qshareddata.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qdatetime.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qcalendar.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qlocale.h \
@@ -394,7 +419,6 @@ CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qendian.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qjsondocument.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qjsonparseerror.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QObject \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QTextStream \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QTimer \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qtimer.h \
@@ -402,17 +426,11 @@ CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qabstracteventdispatcher.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qeventloop.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qdeadlinetimer.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qtmochelpers.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qtmocconstants.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/q20algorithm.h \
  C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_logindialog.cpp \
  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/logindialog.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdialog.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtguiglobal.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtgui-config.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtguiexports.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qwidget.h \
@@ -466,8 +484,10 @@ CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/qabstractsocket.h \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/QUdpSocket \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/qudpsocket.h \
+ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voicesettingsdialog.h \
  C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_processwatcher.cpp \
  C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_profiledialog.cpp \
  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/profiledialog.h \
  C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_restclient.cpp \
- C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_voiceclient.cpp
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_voiceclient.cpp \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\RipcordAlt_autogen\UVLADIE3JM/moc_voicesettingsdialog.cpp

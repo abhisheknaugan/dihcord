@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <QUdpSocket>
 
+#include "audioengine.h"
+
 class QWebSocket;
 
 // Handles Discord's voice protocol handshake:
@@ -36,12 +38,18 @@ public:
                        const QString &userId, const QString &sessionId);
     void disconnectVoice();
 
+    // Real audio, wired up now that we have a working non-DAVE session.
+    AudioEngine &audioEngine() { return m_audio; }
+    void setMuted(bool muted);
+    void setDeafened(bool deafened);
+
 signals:
     // Emitted once the full handshake completes - secret_key is ready,
     // meaning audio could now be encrypted and sent. Nothing sent yet.
     void voiceHandshakeComplete();
     void voiceError(const QString &reason);
-    void voiceLog(const QString &line); // mirrors GatewayClient's file logger
+    void voiceLog(const QString &line);
+    void voiceDisconnected(); // fired whenever the voice socket closes, ours or Discord's doing // mirrors GatewayClient's file logger
 
 private slots:
     void onSocketConnected();
@@ -70,6 +78,12 @@ private:
     void sendSelectProtocol(const QString &externalIp, quint16 externalPort);
     void log(const QString &line);
 
+    // Real audio, byte layout matches Abaddon's proven implementation:
+    // 12-byte RTP header + XChaCha20-Poly1305 ciphertext + 4-byte nonce
+    // counter trailer.
+    void sendEncryptedAudioFrame(const QByteArray &opusData);
+    void handleIncomingAudioPacket(const QByteArray &packet);
+
     QWebSocket *m_socket;
     QUdpSocket *m_udpSocket;
     QTimer *m_heartbeatTimer;
@@ -87,4 +101,13 @@ private:
     QByteArray m_secretKey; // filled in once Session Description arrives
     QString m_selectedMode;
     qint64 m_lastVoiceSequence = -1; // "seq" field from incoming voice gateway messages
+
+    AudioEngine m_audio;
+    quint16 m_rtpSequence = 0;
+    uint32_t m_rtpTimestamp = 0;
+    uint32_t m_nonceCounter = 0;
+
+    int m_sentFrameCount = 0;
+    int m_receivedFrameCount = 0;
+    int m_decryptFailCount = 0;
 };

@@ -221,6 +221,51 @@ CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\voiceclient.cpp -o CMakeFiles\RipcordAlt.dir\src\voiceclient.cpp.s
 
+CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj: CMakeFiles/RipcordAlt.dir/flags.make
+CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj: CMakeFiles/RipcordAlt.dir/includes_CXX.rsp
+CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj: C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/audioengine.cpp
+CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj: CMakeFiles/RipcordAlt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj -MF CMakeFiles\RipcordAlt.dir\src\audioengine.cpp.obj.d -o CMakeFiles\RipcordAlt.dir\src\audioengine.cpp.obj -c C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\audioengine.cpp
+
+CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\audioengine.cpp > CMakeFiles\RipcordAlt.dir\src\audioengine.cpp.i
+
+CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\audioengine.cpp -o CMakeFiles\RipcordAlt.dir\src\audioengine.cpp.s
+
+CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj: CMakeFiles/RipcordAlt.dir/flags.make
+CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj: CMakeFiles/RipcordAlt.dir/includes_CXX.rsp
+CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj: C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/equalizer.cpp
+CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj: CMakeFiles/RipcordAlt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj -MF CMakeFiles\RipcordAlt.dir\src\equalizer.cpp.obj.d -o CMakeFiles\RipcordAlt.dir\src\equalizer.cpp.obj -c C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\equalizer.cpp
+
+CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\equalizer.cpp > CMakeFiles\RipcordAlt.dir\src\equalizer.cpp.i
+
+CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\equalizer.cpp -o CMakeFiles\RipcordAlt.dir\src\equalizer.cpp.s
+
+CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj: CMakeFiles/RipcordAlt.dir/flags.make
+CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj: CMakeFiles/RipcordAlt.dir/includes_CXX.rsp
+CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj: C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voicesettingsdialog.cpp
+CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj: CMakeFiles/RipcordAlt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj -MF CMakeFiles\RipcordAlt.dir\src\voicesettingsdialog.cpp.obj.d -o CMakeFiles\RipcordAlt.dir\src\voicesettingsdialog.cpp.obj -c C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\voicesettingsdialog.cpp
+
+CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\voicesettingsdialog.cpp > CMakeFiles\RipcordAlt.dir\src\voicesettingsdialog.cpp.i
+
+CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\voicesettingsdialog.cpp -o CMakeFiles\RipcordAlt.dir\src\voicesettingsdialog.cpp.s
+
 # Object files for target RipcordAlt
 RipcordAlt_OBJECTS = \
 "CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj" \
@@ -232,7 +277,10 @@ RipcordAlt_OBJECTS = \
 "CMakeFiles/RipcordAlt.dir/src/tokenstore.cpp.obj" \
 "CMakeFiles/RipcordAlt.dir/src/processwatcher.cpp.obj" \
 "CMakeFiles/RipcordAlt.dir/src/profiledialog.cpp.obj" \
-"CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.obj"
+"CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.obj" \
+"CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj" \
+"CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj" \
+"CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj"
 
 # External object files for target RipcordAlt
 RipcordAlt_EXTERNAL_OBJECTS =
@@ -247,18 +295,22 @@ RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/tokenstore.cpp.obj
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/processwatcher.cpp.obj
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/profiledialog.cpp.obj
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.obj
+RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj
+RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj
+RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/build.make
 RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Widgets.a
 RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6WebSockets.a
 RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Sql.a
-RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Gui.a
+RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Multimedia.a
 RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Network.a
+RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Gui.a
 RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Core.a
 RipcordAlt.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6EntryPoint.a
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/linkLibs.rsp
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/objects1.rsp
 RipcordAlt.exe: CMakeFiles/RipcordAlt.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable RipcordAlt.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable RipcordAlt.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\RipcordAlt.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

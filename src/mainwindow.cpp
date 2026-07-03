@@ -83,6 +83,35 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     splitter->setStretchFactor(2, 1);
 
     rootLayout->addWidget(splitter);
+
+    // --- Voice control bar (hidden until actually connected to voice) ---
+    m_voiceBar = new QWidget();
+    auto *voiceBarLayout = new QHBoxLayout(m_voiceBar);
+    voiceBarLayout->setContentsMargins(4, 4, 4, 4);
+
+    m_voiceStatusLabel = new QLabel("Connected to voice");
+    m_muteButton = new QPushButton("Mute");
+    m_muteButton->setCheckable(true);
+    m_deafenButton = new QPushButton("Deafen");
+    m_deafenButton->setCheckable(true);
+    m_voiceSettingsButton = new QPushButton("Voice Settings");
+    m_disconnectVoiceButton = new QPushButton("Disconnect");
+
+    voiceBarLayout->addWidget(m_voiceStatusLabel);
+    voiceBarLayout->addStretch();
+    voiceBarLayout->addWidget(m_muteButton);
+    voiceBarLayout->addWidget(m_deafenButton);
+    voiceBarLayout->addWidget(m_voiceSettingsButton);
+    voiceBarLayout->addWidget(m_disconnectVoiceButton);
+
+    m_voiceBar->hide();
+    rootLayout->addWidget(m_voiceBar);
+
+    connect(m_muteButton, &QPushButton::clicked, this, &MainWindow::onMuteClicked);
+    connect(m_deafenButton, &QPushButton::clicked, this, &MainWindow::onDeafenClicked);
+    connect(m_disconnectVoiceButton, &QPushButton::clicked, this, &MainWindow::onDisconnectVoiceClicked);
+    connect(m_voiceSettingsButton, &QPushButton::clicked, this, &MainWindow::onVoiceSettingsClicked);
+
     setCentralWidget(central);
 
     connect(m_guildList, &QListWidget::itemClicked, this, &MainWindow::onGuildSelected);
@@ -121,6 +150,13 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     connect(m_voiceClient, &VoiceClient::voiceHandshakeComplete, this, &MainWindow::onVoiceHandshakeComplete);
     connect(m_voiceClient, &VoiceClient::voiceError, this, &MainWindow::onVoiceError);
     connect(m_voiceClient, &VoiceClient::voiceLog, this, &MainWindow::onVoiceLog);
+    connect(m_voiceClient, &VoiceClient::voiceDisconnected, this, [this]() {
+        m_voiceBar->hide();
+        m_muteButton->setChecked(false);
+        m_muteButton->setText("Mute");
+        m_deafenButton->setChecked(false);
+        m_deafenButton->setText("Deafen");
+    });
 }
 
 // ---------------- Guilds / channels ----------------
@@ -423,12 +459,59 @@ void MainWindow::onVoiceServerUpdate(const QJsonObject &data)
 
 void MainWindow::onVoiceHandshakeComplete()
 {
-    statusBar()->showMessage("Voice connected - handshake complete (audio not implemented yet)", 8000);
+    statusBar()->showMessage("Voice connected", 5000);
+    m_voiceStatusLabel->setText("Connected to voice");
+    m_muteButton->setChecked(false);
+    m_deafenButton->setChecked(false);
+    m_voiceBar->show();
 }
 
 void MainWindow::onVoiceError(const QString &reason)
 {
     statusBar()->showMessage("Voice error: " + reason, 8000);
+}
+
+void MainWindow::onMuteClicked()
+{
+    bool muted = m_muteButton->isChecked();
+    m_voiceClient->setMuted(muted);
+    m_muteButton->setText(muted ? "Unmute" : "Mute");
+}
+
+void MainWindow::onDeafenClicked()
+{
+    bool deafened = m_deafenButton->isChecked();
+    m_voiceClient->setDeafened(deafened);
+
+    // Matches standard Discord UX: deafening also mutes your mic, since
+    // there's little point talking if you can't hear anyone respond.
+    if (deafened) {
+        m_muteButton->setChecked(true);
+        m_voiceClient->setMuted(true);
+        m_muteButton->setText("Unmute");
+    }
+    m_deafenButton->setText(deafened ? "Undeafen" : "Deafen");
+}
+
+void MainWindow::onDisconnectVoiceClicked()
+{
+    if (!m_pendingVoiceGuildId.isEmpty()) {
+        m_gateway->leaveVoiceChannel(m_pendingVoiceGuildId);
+    }
+    m_voiceClient->disconnectVoice();
+    m_voiceBar->hide();
+    m_muteButton->setChecked(false);
+    m_muteButton->setText("Mute");
+    m_deafenButton->setChecked(false);
+    m_deafenButton->setText("Deafen");
+    statusBar()->showMessage("Left voice channel", 3000);
+}
+
+void MainWindow::onVoiceSettingsClicked()
+{
+    auto *dialog = new VoiceSettingsDialog(m_voiceClient, this);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->show();
 }
 
 void MainWindow::onVoiceLog(const QString &line)

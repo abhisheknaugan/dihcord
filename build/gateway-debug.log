@@ -1,259 +1,285 @@
-14:52:43.705  connectGateway() called
-14:52:44.159  WebSocket connected (waiting for Hello)
-14:52:44.159  Received Hello, heartbeat_interval=41250ms, sending Identify
-14:52:44.160  Sending Identify (with capabilities flag)
-14:52:46.153  READY received - 38 guilds in payload
-14:52:46.154    guild 1448121905033773268 - unavailable=false, channels=44
-14:52:46.154    guild 1293124957693280297 - unavailable=false, channels=78
-14:52:46.154    guild 1256986994786172939 - unavailable=false, channels=47
-14:52:46.154    guild 281533815824973824 - unavailable=false, channels=66
-14:52:46.155    guild 1255029439746543637 - unavailable=false, channels=76
-14:52:46.155    guild 1364025757814493284 - unavailable=false, channels=90
-14:52:46.156    guild 1023226293258571877 - unavailable=false, channels=52
-14:52:46.156    guild 1264253348937465936 - unavailable=false, channels=5
-14:52:46.156    guild 981424816508792832 - unavailable=false, channels=89
-14:52:46.156    guild 1081222544348168242 - unavailable=false, channels=54
-14:52:46.156    guild 1399626942923411497 - unavailable=false, channels=20
-14:52:46.157    guild 1041963702238318602 - unavailable=false, channels=45
-14:52:46.157    guild 1341256548323692586 - unavailable=false, channels=193
-14:52:46.157    guild 231664689694638081 - unavailable=false, channels=3
-14:52:46.157    guild 1319438038253961276 - unavailable=false, channels=31
-14:52:46.157    guild 1240877872948707400 - unavailable=false, channels=103
-14:52:46.157    guild 850341150266097675 - unavailable=false, channels=86
-14:52:46.158    guild 1263411855343358024 - unavailable=false, channels=53
-14:52:46.158    guild 939936568653799534 - unavailable=false, channels=105
-14:52:46.158    guild 1106267521885151253 - unavailable=false, channels=34
-14:52:46.158    guild 1471852746910208223 - unavailable=false, channels=64
-14:52:46.158    guild 1505670589778759701 - unavailable=false, channels=20
-14:52:46.158    guild 1399694698783703193 - unavailable=false, channels=133
-14:52:46.159    guild 1496001966806138911 - unavailable=false, channels=15
-14:52:46.159    guild 441161241290080256 - unavailable=false, channels=90
-14:52:46.159    guild 1265271912037089312 - unavailable=false, channels=106
-14:52:46.159    guild 891551837650550784 - unavailable=false, channels=115
-14:52:46.159    guild 994528533248491521 - unavailable=false, channels=59
-14:52:46.159    guild 1464986241358631111 - unavailable=false, channels=8
-14:52:46.160    guild 1486481854524817651 - unavailable=false, channels=72
-14:52:46.160    guild 1408201417834893385 - unavailable=false, channels=118
-14:52:46.160    guild 1186592936364871771 - unavailable=false, channels=99
-14:52:46.160    guild 1447691073479770124 - unavailable=false, channels=200
-14:52:46.160    guild 1201403404577153077 - unavailable=false, channels=38
-14:52:46.160    guild 1489375326688772147 - unavailable=false, channels=26
-14:52:46.161    guild 916193307909038141 - unavailable=false, channels=37
-14:52:46.161    guild 697021345434828841 - unavailable=false, channels=141
-14:52:46.161    guild 1130451502213902477 - unavailable=false, channels=32
-14:52:46.161  38 of 38 guilds were immediately available from READY
-14:52:46.167  Dispatch event (ignored): READY_SUPPLEMENTAL
-14:52:46.167  Dispatch event (ignored): SESSIONS_REPLACE
-14:52:48.708  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
-14:52:53.709  Sending Voice State Update - join guild=939936568653799534 channel=1458699005851865183
-14:52:54.027  Dispatch: VOICE_STATE_UPDATE (session_id=7e16d5c6f527018c32f3734a4182512a)
-14:52:54.028  Dispatch event (ignored): VOICE_CHANNEL_START_TIME_UPDATE
-14:52:54.190  Dispatch: VOICE_SERVER_UPDATE (endpoint=c-ams17-024db97c.discord.media:443)
-14:52:54.191  [voice] Connecting to voice gateway: wss://c-ams17-024db97c.discord.media:443/?v=9
-14:52:54.984  [voice] Voice WebSocket connected
-14:52:54.984  [voice] Voice Hello - heartbeat_interval=13750ms, sending Identify
-14:52:54.984  [voice] Sending voice Identify - server_id=939936568653799534, user_id=619161851309195264, session_id=7e16d5c6f527018c32f3734a4182512a, token_length=16
-14:52:55.234  [voice] Voice Ready - ssrc=67607 ip=104.29.153.171 port=19301 modes=[aead_aes256_gcm_rtpsize, aead_xchacha20_poly1305_rtpsize]
-14:52:55.235  [voice] Sending UDP IP discovery packet to 104.29.153.171:19301
-14:52:55.471  [voice] IP discovery response - external address seen as 103.251.210.156:57770
-14:52:55.471  [voice] Selecting voice protocol/mode: aead_xchacha20_poly1305_rtpsize
-14:52:55.723  [voice] Session Description received - mode=aead_xchacha20_poly1305_rtpsize, secret_key=32 bytes
-14:52:55.723  [voice] Voice handshake complete - ready for audio (not yet implemented, Phase B)
-14:52:55.724  [voice] Unhandled voice opcode: 15
-14:52:56.712  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:52:56.857  Dispatch event (ignored): PRESENCE_UPDATE
-14:52:57.714  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:52:58.715  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:52:59.716  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:00.717  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:01.718  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:01.853  Dispatch event (ignored): PASSIVE_UPDATE_V1
-14:53:02.719  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:03.018  Dispatch event (ignored): MESSAGE_REACTION_ADD
-14:53:03.721  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:03.770  Dispatch event (ignored): MESSAGE_REACTION_ADD
-14:53:04.721  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:05.721  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:05.979  Dispatch: VOICE_STATE_UPDATE (session_id=73451c935bbd4d06421effd9ad8822b1)
-14:53:06.723  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:07.726  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:07.889  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:08.725  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:09.538  Dispatch: VOICE_STATE_UPDATE (session_id=73451c935bbd4d06421effd9ad8822b1)
-14:53:09.728  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:10.530  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:10.540  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:10.544  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:11.730  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:12.731  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:13.732  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:14.733  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:15.735  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:16.737  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:17.736  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:18.739  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:19.740  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:20.739  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:21.742  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:22.742  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:23.745  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:24.746  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:25.745  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:26.660  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:26.748  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:27.748  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:28.750  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:29.751  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:30.753  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:31.752  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:32.754  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:33.029  Dispatch event (ignored): PASSIVE_UPDATE_V1
-14:53:33.756  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:34.756  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:35.757  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:36.759  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:37.760  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:38.760  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:39.761  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:40.763  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:41.404  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:41.434  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:41.479  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:41.764  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:42.537  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:42.763  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:43.593  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:43.766  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:43.949  Dispatch event (ignored): PRESENCE_UPDATE
-14:53:44.766  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:45.767  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:46.768  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:47.768  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:48.771  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:49.794  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:50.772  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:51.772  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:52.773  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:53.773  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:54.775  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-14:53:55.776  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:19:57.522  connectGateway() called
-16:19:58.003  WebSocket connected (waiting for Hello)
-16:19:58.003  Received Hello, heartbeat_interval=41250ms, sending Identify
-16:19:58.003  Sending Identify (with capabilities flag)
-16:20:00.238  READY received - 38 guilds in payload
-16:20:00.238    guild 1448121905033773268 - unavailable=false, channels=44
-16:20:00.238    guild 1293124957693280297 - unavailable=false, channels=78
-16:20:00.238    guild 1256986994786172939 - unavailable=false, channels=47
-16:20:00.239    guild 281533815824973824 - unavailable=false, channels=66
-16:20:00.239    guild 1255029439746543637 - unavailable=false, channels=76
-16:20:00.239    guild 1364025757814493284 - unavailable=false, channels=90
-16:20:00.239    guild 1023226293258571877 - unavailable=false, channels=52
-16:20:00.239    guild 1264253348937465936 - unavailable=false, channels=5
-16:20:00.239    guild 981424816508792832 - unavailable=false, channels=89
-16:20:00.240    guild 1081222544348168242 - unavailable=false, channels=54
-16:20:00.240    guild 1399626942923411497 - unavailable=false, channels=20
-16:20:00.240    guild 1041963702238318602 - unavailable=false, channels=45
-16:20:00.240    guild 1341256548323692586 - unavailable=false, channels=193
-16:20:00.240    guild 231664689694638081 - unavailable=false, channels=3
-16:20:00.240    guild 1319438038253961276 - unavailable=false, channels=31
-16:20:00.241    guild 1240877872948707400 - unavailable=false, channels=103
-16:20:00.241    guild 850341150266097675 - unavailable=false, channels=86
-16:20:00.241    guild 1263411855343358024 - unavailable=false, channels=53
-16:20:00.241    guild 939936568653799534 - unavailable=false, channels=103
-16:20:00.241    guild 1106267521885151253 - unavailable=false, channels=34
-16:20:00.242    guild 1471852746910208223 - unavailable=false, channels=64
-16:20:00.242    guild 1505670589778759701 - unavailable=false, channels=20
-16:20:00.242    guild 1399694698783703193 - unavailable=false, channels=138
-16:20:00.242    guild 1496001966806138911 - unavailable=false, channels=15
-16:20:00.242    guild 441161241290080256 - unavailable=false, channels=90
-16:20:00.242    guild 1265271912037089312 - unavailable=false, channels=106
-16:20:00.243    guild 891551837650550784 - unavailable=false, channels=117
-16:20:00.243    guild 994528533248491521 - unavailable=false, channels=59
-16:20:00.243    guild 1464986241358631111 - unavailable=false, channels=8
-16:20:00.243    guild 1486481854524817651 - unavailable=false, channels=72
-16:20:00.243    guild 1408201417834893385 - unavailable=false, channels=118
-16:20:00.243    guild 1186592936364871771 - unavailable=false, channels=99
-16:20:00.244    guild 1447691073479770124 - unavailable=false, channels=201
-16:20:00.244    guild 1201403404577153077 - unavailable=false, channels=38
-16:20:00.244    guild 1489375326688772147 - unavailable=false, channels=26
-16:20:00.244    guild 916193307909038141 - unavailable=false, channels=37
-16:20:00.244    guild 697021345434828841 - unavailable=false, channels=141
-16:20:00.244    guild 1130451502213902477 - unavailable=false, channels=32
-16:20:00.245  38 of 38 guilds were immediately available from READY
-16:20:00.249  Dispatch event (ignored): READY_SUPPLEMENTAL
-16:20:00.249  Dispatch event (ignored): SESSIONS_REPLACE
-16:20:00.513  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
-16:20:02.328  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:02.332  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:02.335  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:02.602  Dispatch event (ignored): CONTENT_INVENTORY_INBOX_STALE
-16:20:02.789  Sending Voice State Update - join guild=939936568653799534 channel=1236957417821044746
-16:20:03.086  Dispatch: VOICE_STATE_UPDATE (session_id=b6c21eef83cfeb56242744213e539036)
-16:20:03.086  Dispatch event (ignored): VOICE_CHANNEL_START_TIME_UPDATE
-16:20:04.001  Dispatch: VOICE_SERVER_UPDATE (endpoint=india11007.discord.media:443)
-16:20:04.002  [voice] Connecting to voice gateway: wss://india11007.discord.media:443/?v=9
-16:20:06.627  Dispatch event (ignored): MESSAGE_UPDATE
-16:20:07.114  [voice] Voice WebSocket connected
-16:20:07.114  [voice] Voice Hello - heartbeat_interval=13750ms, sending Identify
-16:20:07.115  [voice] Sending voice Identify - server_id=939936568653799534, user_id=619161851309195264, session_id=b6c21eef83cfeb56242744213e539036, token_length=16
-16:20:07.118  Dispatch event (ignored): MESSAGE_UPDATE
-16:20:07.121  [voice] Voice Ready - ssrc=60485 ip=35.207.229.15 port=50003 modes=[aead_aes256_gcm_rtpsize, aead_xchacha20_poly1305_rtpsize]
-16:20:07.121  [voice] Sending UDP IP discovery packet to 35.207.229.15:50003
-16:20:07.125  [voice] IP discovery response - external address seen as 103.251.210.156:54031
-16:20:07.125  [voice] Selecting voice protocol/mode: aead_xchacha20_poly1305_rtpsize
-16:20:07.132  [voice] Session Description received - mode=aead_xchacha20_poly1305_rtpsize, secret_key=32 bytes
-16:20:07.132  [voice] Voice handshake complete - ready for audio (not yet implemented, Phase B)
-16:20:07.133  [voice] Unhandled voice opcode: 15
-16:20:08.133  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:09.134  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:10.135  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:11.136  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:11.162  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:12.137  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:13.139  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:14.140  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:14.269  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:15.142  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:15.371  Dispatch event (ignored): CHANNEL_UPDATE
-16:20:16.143  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:17.145  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:18.144  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:19.146  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:20.146  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:21.147  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:21.979  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:22.150  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:24.150  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:25.131  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:25.151  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:26.153  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:26.618  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:26.633  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:26.655  Dispatch event (ignored): PRESENCE_UPDATE
-16:20:27.154  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:28.156  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:29.156  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:31.158  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:32.159  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:34.161  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:35.162  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:36.163  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:36.711  Dispatch: VOICE_STATE_UPDATE (session_id=d395e6028996c8acd6e3652bdf51136b)
-16:20:36.908  Dispatch: VOICE_STATE_UPDATE (session_id=c368939d3f3c9d1ce23ffa779602ec6d)
-16:20:36.908  Dispatch event (ignored): CHANNEL_DELETE
-16:20:37.165  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:38.165  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:39.164  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:40.167  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:41.166  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:42.167  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:43.167  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:44.168  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:45.170  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:46.170  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:47.172  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:48.173  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:49.174  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:50.175  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
-16:20:51.176  [voice] Unexpected UDP reply size: 52 bytes (expected 74)
+07:30:33.937  connectGateway() called
+07:30:34.562  WebSocket connected (waiting for Hello)
+07:30:34.563  Received Hello, heartbeat_interval=41250ms, sending Identify
+07:30:34.563  Sending Identify (with capabilities flag)
+07:30:37.368  READY received - 40 guilds in payload
+07:30:37.369    guild 1448121905033773268 - unavailable=false, channels=44
+07:30:37.369    guild 1293124957693280297 - unavailable=false, channels=78
+07:30:37.369    guild 1256986994786172939 - unavailable=false, channels=47
+07:30:37.369    guild 281533815824973824 - unavailable=false, channels=66
+07:30:37.370    guild 1255029439746543637 - unavailable=false, channels=76
+07:30:37.370    guild 1364025757814493284 - unavailable=false, channels=85
+07:30:37.370    guild 1023226293258571877 - unavailable=false, channels=52
+07:30:37.370    guild 1264253348937465936 - unavailable=false, channels=5
+07:30:37.370    guild 981424816508792832 - unavailable=false, channels=89
+07:30:37.371    guild 1081222544348168242 - unavailable=false, channels=55
+07:30:37.371    guild 1399626942923411497 - unavailable=false, channels=20
+07:30:37.371    guild 1041963702238318602 - unavailable=false, channels=45
+07:30:37.371    guild 1341256548323692586 - unavailable=false, channels=194
+07:30:37.371    guild 231664689694638081 - unavailable=false, channels=3
+07:30:37.371    guild 1319438038253961276 - unavailable=false, channels=31
+07:30:37.371    guild 1240877872948707400 - unavailable=false, channels=103
+07:30:37.372    guild 1522274896049209524 - unavailable=false, channels=4
+07:30:37.372    guild 850341150266097675 - unavailable=false, channels=86
+07:30:37.372    guild 1263411855343358024 - unavailable=false, channels=53
+07:30:37.372    guild 1458747267669295249 - unavailable=false, channels=4
+07:30:37.372    guild 939936568653799534 - unavailable=false, channels=103
+07:30:37.372    guild 1106267521885151253 - unavailable=false, channels=34
+07:30:37.373    guild 1471852746910208223 - unavailable=false, channels=64
+07:30:37.373    guild 1505670589778759701 - unavailable=false, channels=20
+07:30:37.373    guild 1399694698783703193 - unavailable=false, channels=162
+07:30:37.373    guild 1496001966806138911 - unavailable=false, channels=15
+07:30:37.373    guild 441161241290080256 - unavailable=false, channels=90
+07:30:37.373    guild 1265271912037089312 - unavailable=false, channels=106
+07:30:37.374    guild 891551837650550784 - unavailable=false, channels=115
+07:30:37.374    guild 994528533248491521 - unavailable=false, channels=59
+07:30:37.374    guild 1464986241358631111 - unavailable=false, channels=8
+07:30:37.374    guild 1486481854524817651 - unavailable=false, channels=72
+07:30:37.374    guild 1408201417834893385 - unavailable=false, channels=117
+07:30:37.374    guild 1186592936364871771 - unavailable=false, channels=99
+07:30:37.374    guild 1447691073479770124 - unavailable=false, channels=204
+07:30:37.375    guild 1201403404577153077 - unavailable=false, channels=38
+07:30:37.375    guild 1489375326688772147 - unavailable=false, channels=26
+07:30:37.375    guild 916193307909038141 - unavailable=false, channels=37
+07:30:37.375    guild 697021345434828841 - unavailable=false, channels=141
+07:30:37.375    guild 1130451502213902477 - unavailable=false, channels=32
+07:30:37.375  40 of 40 guilds were immediately available from READY
+07:30:37.383  Dispatch event (ignored): READY_SUPPLEMENTAL
+07:30:37.383  Dispatch event (ignored): SESSIONS_REPLACE
+07:30:37.383  Dispatch event (ignored): CALL_CREATE
+07:30:42.091  Sending GuildSubscriptions (opcode 14) for guild 1522274896049209524
+07:30:44.208  Sending Voice State Update - join guild=1522274896049209524 channel=1522274896564977789
+07:30:44.516  Dispatch: VOICE_STATE_UPDATE (session_id=e082768c00b4af45924fc4cd37231830)
+07:30:44.877  Dispatch: VOICE_SERVER_UPDATE (endpoint=c-bom11-8ebd2c51.discord.media:2053)
+07:30:44.878  [voice] Connecting to voice gateway: wss://c-bom11-8ebd2c51.discord.media:2053/?v=9
+07:30:44.939  [voice] Voice WebSocket connected
+07:30:44.939  [voice] Voice Hello - heartbeat_interval=13750ms, sending Identify
+07:30:44.939  [voice] Sending voice Identify - server_id=1522274896049209524, user_id=619161851309195264, session_id=e082768c00b4af45924fc4cd37231830, token_length=16
+07:30:44.945  [voice] Voice Ready - ssrc=30353 ip=104.29.138.167 port=19308 modes=[aead_aes256_gcm_rtpsize, aead_xchacha20_poly1305_rtpsize]
+07:30:44.946  [voice] Sending UDP IP discovery packet to 104.29.138.167:19308
+07:30:44.946  [voice] Unhandled voice opcode: 11
+07:30:44.946  [voice] Unhandled voice opcode: 18
+07:30:44.946  [voice] Unhandled voice opcode: 20
+07:30:44.949  [voice] UDP packet received: 74 bytes from ::ffff:104.29.138.167:19308, first byte=0x00
+07:30:44.949  [voice] IP discovery response - external address seen as 103.251.210.156:63701
+07:30:44.949  [voice] Selecting voice protocol/mode: aead_xchacha20_poly1305_rtpsize
+07:30:44.956  [voice] Session Description received - mode=aead_xchacha20_poly1305_rtpsize, secret_key=32 bytes
+07:30:44.956  [voice] Voice handshake complete - starting real audio
+07:30:45.031  [voice] Unhandled voice opcode: 15
+07:30:45.417  Dispatch event (ignored): PRESENCE_UPDATE
+07:30:45.960  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:45.960  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:46.014  [voice] Sent 50 audio frames so far
+07:30:46.961  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:46.961  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:47.014  [voice] Sent 100 audio frames so far
+07:30:47.034  [voice] Unhandled voice opcode: 5
+07:30:47.426  Dispatch event (ignored): PRESENCE_UPDATE
+07:30:47.960  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:47.960  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:48.016  [voice] Sent 150 audio frames so far
+07:30:48.963  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:48.963  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:49.014  [voice] Sent 200 audio frames so far
+07:30:49.965  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:49.965  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:50.015  [voice] Sent 250 audio frames so far
+07:30:50.966  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:50.966  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:51.014  [voice] Sent 300 audio frames so far
+07:30:51.967  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:51.967  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:52.015  [voice] Sent 350 audio frames so far
+07:30:52.967  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:52.967  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:53.014  [voice] Sent 400 audio frames so far
+07:30:53.969  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:53.970  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:54.014  [voice] Sent 450 audio frames so far
+07:30:54.970  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:54.970  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:55.015  [voice] Sent 500 audio frames so far
+07:30:55.971  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:55.971  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:56.014  [voice] Sent 550 audio frames so far
+07:30:56.973  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:56.973  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:57.015  [voice] Sent 600 audio frames so far
+07:30:57.862  Dispatch: VOICE_STATE_UPDATE (session_id=36588596d585083d407639486d5fb95b)
+07:30:57.974  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:57.974  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:58.014  [voice] Sent 650 audio frames so far
+07:30:58.975  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:58.975  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:30:59.014  [voice] Sent 700 audio frames so far
+07:30:59.975  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:30:59.976  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:00.015  [voice] Sent 750 audio frames so far
+07:31:00.819  Dispatch event (ignored): MESSAGE_ACK
+07:31:00.977  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:00.977  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:01.016  [voice] Sent 800 audio frames so far
+07:31:01.978  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:01.979  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:02.015  [voice] Sent 850 audio frames so far
+07:31:02.979  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:02.979  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:03.015  [voice] Sent 900 audio frames so far
+07:31:03.980  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:03.980  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:04.015  [voice] Sent 950 audio frames so far
+07:31:04.980  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:04.981  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:05.015  [voice] Sent 1000 audio frames so far
+07:31:05.982  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:05.982  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:06.015  [voice] Sent 1050 audio frames so far
+07:31:06.982  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:06.983  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:07.015  [voice] Sent 1100 audio frames so far
+07:31:07.840  Dispatch event (ignored): PRESENCE_UPDATE
+07:31:07.983  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:07.984  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:08.015  [voice] Sent 1150 audio frames so far
+07:31:08.983  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:08.984  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:09.015  [voice] Sent 1200 audio frames so far
+07:31:09.983  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:09.983  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:10.015  [voice] Sent 1250 audio frames so far
+07:31:10.986  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:10.987  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:11.015  [voice] Sent 1300 audio frames so far
+07:31:11.988  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:11.988  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:12.015  [voice] Sent 1350 audio frames so far
+07:31:12.382  Dispatch event (ignored): MESSAGE_UPDATE
+07:31:12.927  Dispatch event (ignored): MESSAGE_UPDATE
+07:31:12.990  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:12.990  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:13.015  [voice] Sent 1400 audio frames so far
+07:31:13.989  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:13.989  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:14.015  [voice] Sent 1450 audio frames so far
+07:31:14.991  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:14.992  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:15.015  [voice] Sent 1500 audio frames so far
+07:31:15.992  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:15.992  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:16.015  [voice] Sent 1550 audio frames so far
+07:31:16.993  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:16.993  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:17.015  [voice] Sent 1600 audio frames so far
+07:31:17.993  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:17.993  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:18.015  [voice] Sent 1650 audio frames so far
+07:31:18.993  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:18.994  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:19.015  [voice] Sent 1700 audio frames so far
+07:31:19.995  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:19.995  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:20.015  [voice] Sent 1750 audio frames so far
+07:31:20.995  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:20.996  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:21.015  [voice] Sent 1800 audio frames so far
+07:31:21.997  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:21.997  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:22.015  [voice] Sent 1850 audio frames so far
+07:31:22.998  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:22.998  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:23.015  [voice] Sent 1900 audio frames so far
+07:31:23.998  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:23.998  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:24.015  [voice] Sent 1950 audio frames so far
+07:31:25.000  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:25.000  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:25.015  [voice] Sent 2000 audio frames so far
+07:31:26.000  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:26.000  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:26.015  [voice] Sent 2050 audio frames so far
+07:31:26.967  Dispatch event (ignored): MESSAGE_UPDATE
+07:31:27.003  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:27.003  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:27.015  [voice] Sent 2100 audio frames so far
+07:31:28.004  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:28.004  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:28.015  [voice] Sent 2150 audio frames so far
+07:31:29.005  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:29.005  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:29.015  [voice] Sent 2200 audio frames so far
+07:31:30.006  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:30.006  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:30.015  [voice] Sent 2250 audio frames so far
+07:31:31.007  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:31.008  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:31.015  [voice] Sent 2300 audio frames so far
+07:31:32.007  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:32.007  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:32.015  [voice] Sent 2350 audio frames so far
+07:31:33.009  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:33.010  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:33.015  [voice] Sent 2400 audio frames so far
+07:31:34.010  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:34.011  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:34.015  [voice] Sent 2450 audio frames so far
+07:31:35.011  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:35.012  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:35.015  [voice] Sent 2500 audio frames so far
+07:31:35.870  Dispatch event (ignored): PRESENCE_UPDATE
+07:31:36.013  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:36.013  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:36.015  [voice] Sent 2550 audio frames so far
+07:31:36.645  Dispatch event (ignored): PRESENCE_UPDATE
+07:31:37.014  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:37.014  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:37.015  [voice] Sent 2600 audio frames so far
+07:31:38.015  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:38.015  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:38.015  [voice] Sent 2650 audio frames so far
+07:31:39.015  [voice] Sent 2700 audio frames so far
+07:31:39.015  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:39.016  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:39.859  Dispatch event (ignored): PRESENCE_UPDATE
+07:31:40.015  [voice] Sent 2750 audio frames so far
+07:31:40.017  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:40.017  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:41.015  [voice] Sent 2800 audio frames so far
+07:31:41.018  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:41.018  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:41.283  Dispatch event (ignored): PRESENCE_UPDATE
+07:31:42.015  [voice] Sent 2850 audio frames so far
+07:31:42.019  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:42.019  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:43.015  [voice] Sent 2900 audio frames so far
+07:31:43.020  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:43.021  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:44.015  [voice] Sent 2950 audio frames so far
+07:31:44.022  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:44.022  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:45.015  [voice] Sent 3000 audio frames so far
+07:31:45.022  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:45.022  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:46.015  [voice] Sent 3050 audio frames so far
+07:31:46.024  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:46.024  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:47.015  [voice] Sent 3100 audio frames so far
+07:31:47.025  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:47.025  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:48.015  [voice] Sent 3150 audio frames so far
+07:31:48.026  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:48.027  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:49.015  [voice] Sent 3200 audio frames so far
+07:31:49.027  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:49.028  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:49.698  Dispatch event (ignored): PASSIVE_UPDATE_V1
+07:31:50.015  [voice] Sent 3250 audio frames so far
+07:31:50.028  [voice] UDP packet received: 52 bytes from ::ffff:104.29.138.167:19308, first byte=0x81
+07:31:50.028  [voice] Audio packet dropped: payload type 73 (expected 120/Opus)
+07:31:50.762  Sending Voice State Update - leave guild=1522274896049209524
+07:31:50.775  [voice] Voice WebSocket disconnected - close code: 1000, reason: ""
+07:31:51.061  Dispatch: VOICE_STATE_UPDATE (session_id=e082768c00b4af45924fc4cd37231830)
+07:31:51.062  [voice] Connecting to voice gateway: wss://c-bom11-8ebd2c51.discord.media:2053/?v=9
+07:31:51.122  [voice] Voice WebSocket connected
+07:31:51.122  [voice] Voice Hello - heartbeat_interval=13750ms, sending Identify
+07:31:51.122  [voice] Sending voice Identify - server_id=1522274896049209524, user_id=619161851309195264, session_id=e082768c00b4af45924fc4cd37231830, token_length=16
+07:31:51.128  [voice] Voice WebSocket disconnected - close code: 4006, reason: "Session is no longer valid."

@@ -178,6 +178,54 @@ RipcordAlt_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.s
 .PHONY : RipcordAlt_autogen/mocs_compilation.cpp.s
 
+src/audioengine.obj: src/audioengine.cpp.obj
+.PHONY : src/audioengine.obj
+
+# target to build an object file
+src/audioengine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj
+.PHONY : src/audioengine.cpp.obj
+
+src/audioengine.i: src/audioengine.cpp.i
+.PHONY : src/audioengine.i
+
+# target to preprocess a source file
+src/audioengine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.i
+.PHONY : src/audioengine.cpp.i
+
+src/audioengine.s: src/audioengine.cpp.s
+.PHONY : src/audioengine.s
+
+# target to generate assembly for a file
+src/audioengine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.s
+.PHONY : src/audioengine.cpp.s
+
+src/equalizer.obj: src/equalizer.cpp.obj
+.PHONY : src/equalizer.obj
+
+# target to build an object file
+src/equalizer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj
+.PHONY : src/equalizer.cpp.obj
+
+src/equalizer.i: src/equalizer.cpp.i
+.PHONY : src/equalizer.i
+
+# target to preprocess a source file
+src/equalizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.i
+.PHONY : src/equalizer.cpp.i
+
+src/equalizer.s: src/equalizer.cpp.s
+.PHONY : src/equalizer.s
+
+# target to generate assembly for a file
+src/equalizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.s
+.PHONY : src/equalizer.cpp.s
+
 src/gatewayclient.obj: src/gatewayclient.cpp.obj
 .PHONY : src/gatewayclient.obj
 
@@ -394,6 +442,30 @@ src/voiceclient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.s
 .PHONY : src/voiceclient.cpp.s
 
+src/voicesettingsdialog.obj: src/voicesettingsdialog.cpp.obj
+.PHONY : src/voicesettingsdialog.obj
+
+# target to build an object file
+src/voicesettingsdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.obj
+.PHONY : src/voicesettingsdialog.cpp.obj
+
+src/voicesettingsdialog.i: src/voicesettingsdialog.cpp.i
+.PHONY : src/voicesettingsdialog.i
+
+# target to preprocess a source file
+src/voicesettingsdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.i
+.PHONY : src/voicesettingsdialog.cpp.i
+
+src/voicesettingsdialog.s: src/voicesettingsdialog.cpp.s
+.PHONY : src/voicesettingsdialog.s
+
+# target to generate assembly for a file
+src/voicesettingsdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/voicesettingsdialog.cpp.s
+.PHONY : src/voicesettingsdialog.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -408,6 +480,12 @@ help:
 	@echo ... RipcordAlt_autogen/mocs_compilation.obj
 	@echo ... RipcordAlt_autogen/mocs_compilation.i
 	@echo ... RipcordAlt_autogen/mocs_compilation.s
+	@echo ... src/audioengine.obj
+	@echo ... src/audioengine.i
+	@echo ... src/audioengine.s
+	@echo ... src/equalizer.obj
+	@echo ... src/equalizer.i
+	@echo ... src/equalizer.s
 	@echo ... src/gatewayclient.obj
 	@echo ... src/gatewayclient.i
 	@echo ... src/gatewayclient.s
@@ -435,6 +513,9 @@ help:
 	@echo ... src/voiceclient.obj
 	@echo ... src/voiceclient.i
 	@echo ... src/voiceclient.s
+	@echo ... src/voicesettingsdialog.obj
+	@echo ... src/voicesettingsdialog.i
+	@echo ... src/voicesettingsdialog.s
 .PHONY : help
 
 

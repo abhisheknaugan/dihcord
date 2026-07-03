@@ -471,4 +471,22 @@ CMakeFiles/RipcordAlt.dir/src/main.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/qabstractsocket.h \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/QUdpSocket \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/qudpsocket.h \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\audioengine.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSink \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosink.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiodevice.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtaudio.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudio.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudioformat.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSource \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosource.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QByteArray \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QIODevice \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\equalizer.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\voicesettingsdialog.h \
  C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\tokenstore.h

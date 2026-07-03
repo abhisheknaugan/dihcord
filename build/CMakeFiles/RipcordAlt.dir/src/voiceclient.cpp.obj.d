@@ -375,6 +375,26 @@ CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qdeadlinetimer.h \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/QUdpSocket \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/qudpsocket.h \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\audioengine.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSink \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosink.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/qtguiglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/qtgui-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/qtguiexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiodevice.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtaudio.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudio.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudioformat.h \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSource \
+ C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosource.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QByteArray \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QIODevice \
+ C:\Users\abhis\Downloads\ripcord-alt\ripcord-alt\src\equalizer.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QDateTime \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QJsonArray \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qjsonarray.h \
@@ -408,4 +428,101 @@ CMakeFiles/RipcordAlt.dir/src/voiceclient.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtcpsocket.h \
  C:/Qt/6.11.1/mingw_64/include/QtWebSockets/qwebsockets_global.h \
  C:/Qt/6.11.1/mingw_64/include/QtWebSockets/qtwebsocketsexports.h \
- C:/Qt/6.11.1/mingw_64/include/QtWebSockets/qwebsocketprotocol.h
+ C:/Qt/6.11.1/mingw_64/include/QtWebSockets/qwebsocketprotocol.h \
+ C:/msys64/mingw64/include/sodium.h \
+ C:/msys64/mingw64/include/sodium/version.h \
+ C:/msys64/mingw64/include/sodium/export.h \
+ C:/msys64/mingw64/include/sodium/core.h \
+ C:/msys64/mingw64/include/sodium/crypto_aead_aegis128l.h \
+ C:/msys64/mingw64/include/sodium/crypto_aead_aegis256.h \
+ C:/msys64/mingw64/include/sodium/crypto_aead_aes256gcm.h \
+ C:/msys64/mingw64/include/sodium/crypto_aead_chacha20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_aead_xchacha20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth_hmacsha512256.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth_hmacsha512.h \
+ C:/msys64/mingw64/include/sodium/crypto_hash_sha512.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth_hmacsha256.h \
+ C:/msys64/mingw64/include/sodium/crypto_hash_sha256.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth_hmacsha512.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth_hmacsha512256.h \
+ C:/msys64/mingw64/include/sodium/crypto_box.h \
+ C:/msys64/mingw64/include/sodium/crypto_box_curve25519xsalsa20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_xsalsa20.h \
+ C:/msys64/mingw64/include/sodium/crypto_box_curve25519xsalsa20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_hchacha20.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_hsalsa20.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_keccak1600.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_salsa20.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_salsa2012.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_salsa208.h \
+ C:/msys64/mingw64/include/sodium/crypto_generichash.h \
+ C:/msys64/mingw64/include/sodium/crypto_generichash_blake2b.h \
+ C:/msys64/mingw64/include/sodium/crypto_generichash_blake2b.h \
+ C:/msys64/mingw64/include/sodium/crypto_hash.h \
+ C:/msys64/mingw64/include/sodium/crypto_hash_sha256.h \
+ C:/msys64/mingw64/include/sodium/crypto_hash_sha3.h \
+ C:/msys64/mingw64/include/sodium/crypto_hash_sha512.h \
+ C:/msys64/mingw64/include/sodium/crypto_ipcrypt.h \
+ C:/msys64/mingw64/include/sodium/crypto_kdf.h \
+ C:/msys64/mingw64/include/sodium/crypto_kdf_blake2b.h \
+ C:/msys64/mingw64/include/sodium/crypto_kdf_blake2b.h \
+ C:/msys64/mingw64/include/sodium/crypto_kdf_hkdf_sha256.h \
+ C:/msys64/mingw64/include/sodium/crypto_kdf.h \
+ C:/msys64/mingw64/include/sodium/crypto_auth_hmacsha256.h \
+ C:/msys64/mingw64/include/sodium/crypto_kdf_hkdf_sha512.h \
+ C:/msys64/mingw64/include/sodium/crypto_kem.h \
+ C:/msys64/mingw64/include/sodium/crypto_kem_xwing.h \
+ C:/msys64/mingw64/include/sodium/crypto_kem_mlkem768.h \
+ C:/msys64/mingw64/include/sodium/crypto_kem_xwing.h \
+ C:/msys64/mingw64/include/sodium/crypto_kx.h \
+ C:/msys64/mingw64/include/sodium/crypto_onetimeauth.h \
+ C:/msys64/mingw64/include/sodium/crypto_onetimeauth_poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_onetimeauth_poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_pwhash.h \
+ C:/msys64/mingw64/include/sodium/crypto_pwhash_argon2i.h \
+ C:/msys64/mingw64/include/sodium/crypto_pwhash_argon2id.h \
+ C:/msys64/mingw64/include/sodium/crypto_pwhash_argon2i.h \
+ C:/msys64/mingw64/include/sodium/crypto_scalarmult.h \
+ C:/msys64/mingw64/include/sodium/crypto_scalarmult_curve25519.h \
+ C:/msys64/mingw64/include/sodium/crypto_scalarmult_curve25519.h \
+ C:/msys64/mingw64/include/sodium/crypto_secretbox.h \
+ C:/msys64/mingw64/include/sodium/crypto_secretbox_xsalsa20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_secretbox_xsalsa20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_secretstream_xchacha20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_aead_xchacha20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_chacha20.h \
+ C:/msys64/mingw64/include/sodium/crypto_shorthash.h \
+ C:/msys64/mingw64/include/sodium/crypto_shorthash_siphash24.h \
+ C:/msys64/mingw64/include/sodium/crypto_shorthash_siphash24.h \
+ C:/msys64/mingw64/include/sodium/crypto_sign.h \
+ C:/msys64/mingw64/include/sodium/crypto_sign_ed25519.h \
+ C:/msys64/mingw64/include/sodium/crypto_sign_ed25519.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_chacha20.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_salsa20.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_xsalsa20.h \
+ C:/msys64/mingw64/include/sodium/crypto_verify_16.h \
+ C:/msys64/mingw64/include/sodium/crypto_verify_32.h \
+ C:/msys64/mingw64/include/sodium/crypto_verify_64.h \
+ C:/msys64/mingw64/include/sodium/crypto_xof_shake128.h \
+ C:/msys64/mingw64/include/sodium/crypto_xof_shake256.h \
+ C:/msys64/mingw64/include/sodium/crypto_xof_turboshake128.h \
+ C:/msys64/mingw64/include/sodium/crypto_xof_turboshake256.h \
+ C:/msys64/mingw64/include/sodium/randombytes.h \
+ C:/msys64/mingw64/include/sodium/randombytes_internal_random.h \
+ C:/msys64/mingw64/include/sodium/randombytes.h \
+ C:/msys64/mingw64/include/sodium/randombytes_sysrandom.h \
+ C:/msys64/mingw64/include/sodium/runtime.h \
+ C:/msys64/mingw64/include/sodium/utils.h \
+ C:/msys64/mingw64/include/sodium/crypto_box_curve25519xchacha20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_xchacha20.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_ed25519.h \
+ C:/msys64/mingw64/include/sodium/crypto_core_ristretto255.h \
+ C:/msys64/mingw64/include/sodium/crypto_pwhash_scryptsalsa208sha256.h \
+ C:/msys64/mingw64/include/sodium/crypto_scalarmult_ed25519.h \
+ C:/msys64/mingw64/include/sodium/crypto_scalarmult_ristretto255.h \
+ C:/msys64/mingw64/include/sodium/crypto_secretbox_xchacha20poly1305.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_salsa2012.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_salsa208.h \
+ C:/msys64/mingw64/include/sodium/crypto_stream_xchacha20.h

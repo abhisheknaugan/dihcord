@@ -15,7 +15,7 @@ set(CMAKE_AUTORCC ON)
 # compositor before adding it.
 add_definitions(-DQT_NO_OPENGL)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network WebSockets Sql)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network WebSockets Sql Multimedia)
 
 set(SOURCES
     src/main.cpp
@@ -27,6 +27,9 @@ set(SOURCES
     src/processwatcher.cpp
     src/profiledialog.cpp
     src/voiceclient.cpp
+    src/audioengine.cpp
+    src/equalizer.cpp
+    src/voicesettingsdialog.cpp
 )
 
 set(HEADERS
@@ -38,6 +41,9 @@ set(HEADERS
     src/processwatcher.h
     src/profiledialog.h
     src/voiceclient.h
+    src/audioengine.h
+    src/equalizer.h
+    src/voicesettingsdialog.h
 )
 
 add_executable(RipcordAlt WIN32 ${SOURCES} ${HEADERS})
@@ -48,7 +54,18 @@ target_link_libraries(RipcordAlt PRIVATE
     Qt6::Network
     Qt6::WebSockets
     Qt6::Sql
+    Qt6::Multimedia
 )
 
 # Windows Credential Manager for secure token storage (Phase 1: login)
 target_link_libraries(RipcordAlt PRIVATE advapi32 crypt32)
+
+# --- Voice audio: Opus (codec) + libsodium (encryption) -------------------
+# These come from MSYS2's mingw-w64 package repo (pacman), NOT from Qt's
+# installer. Set MSYS2_ROOT to wherever you installed MSYS2 - default
+# guess below is the standard install location.
+set(MSYS2_ROOT "C:/msys64/mingw64" CACHE PATH "Path to MSYS2's mingw64 folder")
+
+target_include_directories(RipcordAlt PRIVATE "${MSYS2_ROOT}/include" "${MSYS2_ROOT}/include/opus")
+target_link_directories(RipcordAlt PRIVATE "${MSYS2_ROOT}/lib")
+target_link_libraries(RipcordAlt PRIVATE opus sodium)

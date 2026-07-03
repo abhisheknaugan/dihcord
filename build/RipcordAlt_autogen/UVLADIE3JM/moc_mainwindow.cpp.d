@@ -1,6 +1,8 @@
 C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADIE3JM/moc_mainwindow.cpp: C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/mainwindow.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/moc_predefs.h \
+  C:/Qt/6.11.1/mingw_64/include/QtCore/QByteArray \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QFile \
+  C:/Qt/6.11.1/mingw_64/include/QtCore/QIODevice \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QJsonArray \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QJsonObject \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QMap \
@@ -8,6 +10,7 @@ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADI
   C:/Qt/6.11.1/mingw_64/include/QtCore/QString \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QTextStream \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QTimer \
+  C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
   C:/Qt/6.11.1/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/q20functional.h \
@@ -154,6 +157,7 @@ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADI
   C:/Qt/6.11.1/mingw_64/include/QtCore/quuid.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/qvariant.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/qvarlengtharray.h \
+  C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.11.1/mingw_64/include/QtCore/qyieldcpu.h \
@@ -183,6 +187,17 @@ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADI
   C:/Qt/6.11.1/mingw_64/include/QtGui/qtransform.h \
   C:/Qt/6.11.1/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.11.1/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSink \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/QAudioSource \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudio.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiodevice.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudioformat.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosink.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qaudiosource.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtaudio.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+  C:/Qt/6.11.1/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
   C:/Qt/6.11.1/mingw_64/include/QtNetwork/QHostAddress \
   C:/Qt/6.11.1/mingw_64/include/QtNetwork/QUdpSocket \
   C:/Qt/6.11.1/mingw_64/include/QtNetwork/qabstractsocket.h \
@@ -191,7 +206,9 @@ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADI
   C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtnetworkexports.h \
   C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   C:/Qt/6.11.1/mingw_64/include/QtNetwork/qudpsocket.h \
+  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QDialog \
   C:/Qt/6.11.1/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.11.1/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.11.1/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtabwidget.h \
@@ -442,7 +459,10 @@ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADI
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
+  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/audioengine.h \
+  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/equalizer.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/gatewayclient.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/processwatcher.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/restclient.h \
-  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voiceclient.h
+  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voiceclient.h \
+  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voicesettingsdialog.h

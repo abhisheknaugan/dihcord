@@ -9,6 +9,7 @@
 #include "processwatcher.h"
 #include "restclient.h"
 #include "voiceclient.h"
+#include "voicesettingsdialog.h"
 
 class QListWidget;
 class QListWidgetItem;
@@ -63,6 +64,11 @@ private slots:
     void onVoiceError(const QString &reason);
     void onVoiceLog(const QString &line);
 
+    void onMuteClicked();
+    void onDeafenClicked();
+    void onDisconnectVoiceClicked();
+    void onVoiceSettingsClicked();
+
 private:
     void populateChannelsForGuild(const QString &guildId);
     void appendMessageToView(const QJsonObject &message);
@@ -84,6 +90,14 @@ private:
     QListWidget *m_messageView;
     QLineEdit *m_messageInput;
     QPushButton *m_sendButton;
+
+    // Voice control bar - only shown while connected to a voice channel
+    QWidget *m_voiceBar;
+    QLabel *m_voiceStatusLabel;
+    QPushButton *m_muteButton;
+    QPushButton *m_deafenButton;
+    QPushButton *m_disconnectVoiceButton;
+    QPushButton *m_voiceSettingsButton;
 
     QString m_token;
     QString m_selectedChannelId;
