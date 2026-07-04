@@ -188,6 +188,7 @@ void MainWindow::onGuildAvailable(const QJsonObject &guild)
 {
     QString guildId = guild.value("id").toString();
     m_guildChannels[guildId] = guild.value("channels").toArray();
+    m_guildVoiceStates[guildId] = guild.value("voice_states").toArray();
 
     QListWidgetItem *current = m_guildList->currentItem();
     if (current && current->data(Qt::UserRole).toString() == guildId) {
@@ -258,9 +259,23 @@ void MainWindow::onChannelSelected(QListWidgetItem *item)
         QString guildId = guildItem->data(Qt::UserRole).toString();
 
         m_pendingVoiceGuildId = guildId;
+        m_pendingVoiceChannelId = channelId;
         m_pendingSessionId.clear();
         m_pendingVoiceEndpoint.clear();
         m_pendingVoiceToken.clear();
+
+        // Seed everyone already sitting in this channel before we even
+        // join - VOICE_STATE_UPDATE only tells us about future changes,
+        // not who's already there.
+        for (const QJsonValue &v : m_guildVoiceStates.value(guildId)) {
+            QJsonObject vs = v.toObject();
+            if (vs.value("channel_id").toString() == channelId) {
+                QString memberUserId = vs.value("user_id").toString();
+                if (!memberUserId.isEmpty()) {
+                    m_voiceClient->addKnownMember(memberUserId);
+                }
+            }
+        }
 
         statusBar()->showMessage("Joining voice channel...", 5000);
         m_gateway->joinVoiceChannel(guildId, channelId);
@@ -424,7 +439,21 @@ void MainWindow::onGameEnded()
 void MainWindow::onVoiceStateUpdate(const QJsonObject &data)
 {
     // This dispatch fires for every member's voice state change in guilds
-    // we're in, not just our own - filter to only our own user's update.
+    // we're in. Track anyone in OUR voice channel specifically as a known
+    // DAVE member, regardless of whether it's our own update - this is
+    // what MLS welcome/proposal processing needs to recognize people who
+    // joined but haven't spoken yet (Speaking events are too late/unreliable
+    // for this).
+    if (data.value("guild_id").toString() == m_pendingVoiceGuildId
+        && data.value("channel_id").toString() == m_pendingVoiceChannelId) {
+        QString memberUserId = data.value("user_id").toString();
+        if (!memberUserId.isEmpty()) {
+            m_voiceClient->addKnownMember(memberUserId);
+        }
+    }
+
+    // The rest of this function only cares about OUR OWN voice state
+    // (to get our session_id for the voice gateway handshake).
     if (data.value("user_id").toString() != m_currentUser.value("id").toString()) {
         return;
     }
@@ -436,7 +465,8 @@ void MainWindow::onVoiceStateUpdate(const QJsonObject &data)
 
     if (!m_pendingVoiceEndpoint.isEmpty() && !m_pendingVoiceToken.isEmpty()) {
         m_voiceClient->connectVoice(m_pendingVoiceEndpoint, m_pendingVoiceToken,
-                                     m_pendingVoiceGuildId, m_currentUser.value("id").toString(),
+                                     m_pendingVoiceGuildId, m_pendingVoiceChannelId,
+                                     m_currentUser.value("id").toString(),
                                      m_pendingSessionId);
     }
 }
@@ -452,7 +482,8 @@ void MainWindow::onVoiceServerUpdate(const QJsonObject &data)
 
     if (!m_pendingSessionId.isEmpty()) {
         m_voiceClient->connectVoice(m_pendingVoiceEndpoint, m_pendingVoiceToken,
-                                     m_pendingVoiceGuildId, m_currentUser.value("id").toString(),
+                                     m_pendingVoiceGuildId, m_pendingVoiceChannelId,
+                                     m_currentUser.value("id").toString(),
                                      m_pendingSessionId);
     }
 }

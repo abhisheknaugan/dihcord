@@ -105,12 +105,14 @@ private:
     QString m_currentActivityName; // empty if not currently "playing" anything
 
     QMap<QString, QJsonArray> m_guildChannels;
+    QMap<QString, QJsonArray> m_guildVoiceStates; // guildId -> voice_states array from GUILD_CREATE/READY
 
     // Voice join is a two-part async handshake on the main gateway -
     // VOICE_STATE_UPDATE gives us session_id, VOICE_SERVER_UPDATE gives
     // us endpoint+token, and they can arrive in either order. We stash
     // whichever comes first and connect once both are in hand.
     QString m_pendingVoiceGuildId;
+    QString m_pendingVoiceChannelId;
     QString m_pendingSessionId;
     QString m_pendingVoiceEndpoint;
     QString m_pendingVoiceToken;

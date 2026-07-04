@@ -30,6 +30,7 @@ set(SOURCES
     src/audioengine.cpp
     src/equalizer.cpp
     src/voicesettingsdialog.cpp
+    src/davesession.cpp
 )
 
 set(HEADERS
@@ -44,6 +45,7 @@ set(HEADERS
     src/audioengine.h
     src/equalizer.h
     src/voicesettingsdialog.h
+    src/davesession.h
 )
 
 add_executable(RipcordAlt WIN32 ${SOURCES} ${HEADERS})
@@ -69,3 +71,26 @@ set(MSYS2_ROOT "C:/msys64/mingw64" CACHE PATH "Path to MSYS2's mingw64 folder")
 target_include_directories(RipcordAlt PRIVATE "${MSYS2_ROOT}/include" "${MSYS2_ROOT}/include/opus")
 target_link_directories(RipcordAlt PRIVATE "${MSYS2_ROOT}/lib")
 target_link_libraries(RipcordAlt PRIVATE opus sodium)
+
+# --- DAVE (real E2EE voice) - libdave + mlspp, built via vcpkg -----------
+set(LIBDAVE_ROOT "C:/Users/abhis/Downloads/libdave/cpp" CACHE PATH "Path to libdave/cpp")
+set(LIBDAVE_VCPKG_INSTALLED "${LIBDAVE_ROOT}/vcpkg/installed/x64-mingw-dynamic" CACHE PATH "vcpkg installed dir")
+
+target_include_directories(RipcordAlt PRIVATE
+    "${LIBDAVE_ROOT}/includes"
+    "${LIBDAVE_VCPKG_INSTALLED}/include"
+)
+target_link_directories(RipcordAlt PRIVATE
+    "${LIBDAVE_ROOT}/build"
+    "${LIBDAVE_VCPKG_INSTALLED}/lib"
+)
+target_link_libraries(RipcordAlt PRIVATE
+    dave
+    mlspp
+    hpke
+    mls_ds
+    bytes
+    tls_syntax
+    ssl
+    crypto
+)

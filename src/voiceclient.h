@@ -7,6 +7,7 @@
 #include <QUdpSocket>
 
 #include "audioengine.h"
+#include "davesession.h"
 
 class QWebSocket;
 
@@ -35,13 +36,14 @@ public:
     ~VoiceClient() override;
 
     void connectVoice(const QString &endpoint, const QString &token, const QString &guildId,
-                       const QString &userId, const QString &sessionId);
+                       const QString &channelId, const QString &userId, const QString &sessionId);
     void disconnectVoice();
 
     // Real audio, wired up now that we have a working non-DAVE session.
     AudioEngine &audioEngine() { return m_audio; }
     void setMuted(bool muted);
     void setDeafened(bool deafened);
+    void addKnownMember(const QString &userId) { m_dave.addKnownMember(userId); }
 
 signals:
     // Emitted once the full handshake completes - secret_key is ready,
@@ -55,6 +57,7 @@ private slots:
     void onSocketConnected();
     void onSocketDisconnected();
     void onTextMessageReceived(const QString &message);
+    void onBinaryMessageReceived(const QByteArray &message);
     void onUdpReadyRead();
     void sendHeartbeat();
 
@@ -90,6 +93,7 @@ private:
 
     QString m_token;
     QString m_guildId;
+    QString m_channelId; // real MLS group id - distinct from guildId
     QString m_userId;
     QString m_sessionId;
 
@@ -103,6 +107,7 @@ private:
     qint64 m_lastVoiceSequence = -1; // "seq" field from incoming voice gateway messages
 
     AudioEngine m_audio;
+    DaveSession m_dave;
     quint16 m_rtpSequence = 0;
     uint32_t m_rtpTimestamp = 0;
     uint32_t m_nonceCounter = 0;

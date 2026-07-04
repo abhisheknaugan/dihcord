@@ -202,6 +202,30 @@ src/audioengine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.s
 .PHONY : src/audioengine.cpp.s
 
+src/davesession.obj: src/davesession.cpp.obj
+.PHONY : src/davesession.obj
+
+# target to build an object file
+src/davesession.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/davesession.cpp.obj
+.PHONY : src/davesession.cpp.obj
+
+src/davesession.i: src/davesession.cpp.i
+.PHONY : src/davesession.i
+
+# target to preprocess a source file
+src/davesession.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/davesession.cpp.i
+.PHONY : src/davesession.cpp.i
+
+src/davesession.s: src/davesession.cpp.s
+.PHONY : src/davesession.s
+
+# target to generate assembly for a file
+src/davesession.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/davesession.cpp.s
+.PHONY : src/davesession.cpp.s
+
 src/equalizer.obj: src/equalizer.cpp.obj
 .PHONY : src/equalizer.obj
 
@@ -483,6 +507,9 @@ help:
 	@echo ... src/audioengine.obj
 	@echo ... src/audioengine.i
 	@echo ... src/audioengine.s
+	@echo ... src/davesession.obj
+	@echo ... src/davesession.i
+	@echo ... src/davesession.s
 	@echo ... src/equalizer.obj
 	@echo ... src/equalizer.i
 	@echo ... src/equalizer.s

@@ -17,6 +17,7 @@ VoiceClient::VoiceClient(QObject *parent)
     connect(m_socket, &QWebSocket::connected, this, &VoiceClient::onSocketConnected);
     connect(m_socket, &QWebSocket::disconnected, this, &VoiceClient::onSocketDisconnected);
     connect(m_socket, &QWebSocket::textMessageReceived, this, &VoiceClient::onTextMessageReceived);
+    connect(m_socket, &QWebSocket::binaryMessageReceived, this, &VoiceClient::onBinaryMessageReceived);
     connect(m_socket, &QWebSocket::errorOccurred, this, [this](QAbstractSocket::SocketError) {
         log("Voice socket error: " + m_socket->errorString());
         emit voiceError(m_socket->errorString());
@@ -29,6 +30,27 @@ VoiceClient::VoiceClient(QObject *parent)
     connect(&m_audio, &AudioEngine::audioError, this, [this](const QString &reason) {
         log("Audio error: " + reason);
         emit voiceError(reason);
+    });
+
+    connect(&m_dave, &DaveSession::sendBinaryOpcode, this, [this](int opcode, const QByteArray &payload) {
+        log(QString("Sending binary opcode %1, %2 bytes").arg(opcode).arg(payload.size()));
+        // Outgoing frames are [opcode(1 byte)][payload...] - NO sequence
+        // prefix. Only incoming (server->client) frames have the 2-byte
+        // sequence header; sending one made Discord read our leading 0x00
+        // as opcode 0 (Identify), causing "Already authenticated" kicks.
+        QByteArray frame;
+        frame.append(static_cast<char>(opcode));
+        frame.append(payload);
+        m_socket->sendBinaryMessage(frame);
+    });
+    connect(&m_dave, &DaveSession::sendJsonOpcode, this, [this](int opcode, int transitionId) {
+        send(QJsonObject{
+            {"op", opcode},
+            {"d", QJsonObject{{"transition_id", transitionId}}}
+        });
+    });
+    connect(&m_dave, &DaveSession::log, this, [this](const QString &line) {
+        log("[DAVE] " + line);
     });
 
     if (sodium_init() < 0) {
@@ -48,10 +70,11 @@ void VoiceClient::log(const QString &line)
 }
 
 void VoiceClient::connectVoice(const QString &endpoint, const QString &token, const QString &guildId,
-                                const QString &userId, const QString &sessionId)
+                                const QString &channelId, const QString &userId, const QString &sessionId)
 {
     m_token = token;
     m_guildId = guildId;
+    m_channelId = channelId;
     m_userId = userId;
     m_sessionId = sessionId;
 
@@ -105,6 +128,24 @@ void VoiceClient::onTextMessageReceived(const QString &message)
     handlePayload(payload);
 }
 
+void VoiceClient::onBinaryMessageReceived(const QByteArray &message)
+{
+    // Voice gateway v9 binary frame: [seq_hi][seq_lo][opcode][payload...]
+    if (message.size() < 3) return;
+    int opcode = static_cast<unsigned char>(message[2]);
+    QByteArray payload = message.mid(3);
+
+    switch (opcode) {
+    case 25: m_dave.handleExternalSender(payload); break;
+    case 27: m_dave.handleProposals(payload); break;
+    case 29: m_dave.handleAnnounceCommit(payload); break;
+    case 30: m_dave.handleWelcome(payload); break;
+    default:
+        log(QString("Unhandled voice binary opcode: %1").arg(opcode));
+        break;
+    }
+}
+
 void VoiceClient::handlePayload(const QJsonObject &payload)
 {
     int op = payload.value("op").toInt(-1);
@@ -126,6 +167,7 @@ void VoiceClient::handlePayload(const QJsonObject &payload)
         m_ssrc = static_cast<quint32>(data.value("ssrc").toVariant().toUInt());
         m_voiceServerIp = QHostAddress(data.value("ip").toString());
         m_voiceServerPort = static_cast<quint16>(data.value("port").toInt());
+        m_dave.setLocalSsrc(m_ssrc);
 
         m_availableModes.clear();
         for (const QJsonValue &v : data.value("modes").toArray()) {
@@ -149,11 +191,41 @@ void VoiceClient::handlePayload(const QJsonObject &payload)
         }
         log(QString("Session Description received - mode=%1, secret_key=%2 bytes")
                 .arg(m_selectedMode).arg(m_secretKey.size()));
+
+        int daveVer = data.value("dave_protocol_version").toInt(0);
+        if (daveVer > 0) {
+            log(QString("DAVE protocol version %1 - initializing MLS session").arg(daveVer));
+            // MLS groups are scoped per voice CHANNEL, not per guild - a
+            // guild can have many voice channels, each its own DAVE group.
+            // Using guildId here caused "PublicMessage not for this group".
+            m_dave.init(static_cast<uint16_t>(daveVer), m_channelId.toULongLong(), m_userId);
+        }
+
         log("Voice handshake complete - starting real audio");
         emit voiceHandshakeComplete();
 
         m_audio.startCapture();
         m_audio.startPlayback();
+        break;
+    }
+    case 5: { // Speaking - our only source of ssrc<->userId mapping
+        uint32_t speakingSsrc = static_cast<uint32_t>(data.value("ssrc").toInt(0));
+        QString speakingUserId = data.value("user_id").toString();
+        log(QString("Speaking event - ssrc=%1, user_id=%2").arg(speakingSsrc).arg(speakingUserId));
+        if (speakingSsrc != 0 && !speakingUserId.isEmpty()) {
+            m_dave.addSsrcMapping(speakingSsrc, speakingUserId);
+        }
+        break;
+    }
+    case 21: { // Prepare Transition
+        int protoVer = data.value("protocol_version").toInt(0);
+        int transitionId = data.value("transition_id").toInt(0);
+        m_dave.handlePrepareTransition(protoVer, transitionId);
+        break;
+    }
+    case 22: { // Execute Transition
+        int transitionId = data.value("transition_id").toInt(0);
+        m_dave.handleExecuteTransition(transitionId);
         break;
     }
     case VHeartbeatAck: {
@@ -200,6 +272,7 @@ void VoiceClient::sendHeartbeat()
 
 void VoiceClient::send(const QJsonObject &payload)
 {
+    log("Sending JSON: " + QString::fromUtf8(QJsonDocument(payload).toJson(QJsonDocument::Compact)));
     m_socket->sendTextMessage(QJsonDocument(payload).toJson(QJsonDocument::Compact));
 }
 
@@ -282,12 +355,28 @@ void VoiceClient::sendEncryptedAudioFrame(const QByteArray &opusData)
         return;
     }
 
+    // If DAVE is active, wrap the raw Opus in the MLS-derived per-sender
+    // encryption first. This inner layer is what actually gives us real
+    // end-to-end encryption; the RTP+transport AEAD below still wraps it,
+    // same as always, but the payload type byte changes to 73 so anyone
+    // relaying this frame knows it's DAVE-wrapped, not raw Opus.
+    QByteArray innerPayload = opusData;
+    bool isDave = m_dave.isDaveEnabled();
+    if (isDave) {
+        QByteArray daveEncrypted = m_dave.encryptOpusFrame(m_ssrc, opusData);
+        if (!daveEncrypted.isEmpty()) {
+            innerPayload = daveEncrypted;
+        } else {
+            isDave = false; // encryption failed - fall back to sending plain (server may reject, but we don't silently corrupt audio)
+        }
+    }
+
     m_rtpSequence++;
     m_rtpTimestamp += 960;
 
     QByteArray rtpHeader(12, static_cast<char>(0));
     rtpHeader[0] = static_cast<char>(0x80);
-    rtpHeader[1] = static_cast<char>(0x78);
+    rtpHeader[1] = static_cast<char>(isDave ? 0x49 : 0x78); // 73 = DAVE-wrapped, 120 = plain Opus
     rtpHeader[2] = static_cast<char>((m_rtpSequence >> 8) & 0xFF);
     rtpHeader[3] = static_cast<char>(m_rtpSequence & 0xFF);
     rtpHeader[4] = static_cast<char>((m_rtpTimestamp >> 24) & 0xFF);
@@ -303,12 +392,12 @@ void VoiceClient::sendEncryptedAudioFrame(const QByteArray &opusData)
     unsigned char nonceBytes[crypto_aead_xchacha20poly1305_ietf_NPUBBYTES] = {0};
     std::memcpy(nonceBytes, &m_nonceCounter, sizeof(uint32_t));
 
-    QByteArray ciphertext(opusData.size() + crypto_aead_xchacha20poly1305_ietf_ABYTES, static_cast<char>(0));
+    QByteArray ciphertext(innerPayload.size() + crypto_aead_xchacha20poly1305_ietf_ABYTES, static_cast<char>(0));
     unsigned long long ciphertextLen = 0;
 
     crypto_aead_xchacha20poly1305_ietf_encrypt(
         reinterpret_cast<unsigned char *>(ciphertext.data()), &ciphertextLen,
-        reinterpret_cast<const unsigned char *>(opusData.constData()), opusData.size(),
+        reinterpret_cast<const unsigned char *>(innerPayload.constData()), innerPayload.size(),
         reinterpret_cast<const unsigned char *>(rtpHeader.constData()), rtpHeader.size(),
         nullptr,
         nonceBytes,
@@ -323,7 +412,7 @@ void VoiceClient::sendEncryptedAudioFrame(const QByteArray &opusData)
 
     m_sentFrameCount++;
     if (m_sentFrameCount % 50 == 0) {
-        log(QString("Sent %1 audio frames so far").arg(m_sentFrameCount));
+        log(QString("Sent %1 audio frames so far (dave=%2)").arg(m_sentFrameCount).arg(isDave ? "yes" : "no"));
     }
 }
 
@@ -345,8 +434,10 @@ void VoiceClient::handleIncomingAudioPacket(const QByteArray &packet)
                 .arg(data[0], 2, 16, QChar('0')));
         return;
     }
-    if ((data[1] & 0x7F) != 120) {
-        log(QString("Audio packet dropped: payload type %1 (expected 120/Opus)").arg(data[1] & 0x7F));
+    int payloadType = data[1] & 0x7F;
+    bool channelUsesDave = m_dave.wasDaveNegotiated();
+    if (payloadType != 120 && payloadType != 73) {
+        log(QString("Audio packet dropped: payload type %1 (expected 120 or 73)").arg(payloadType));
         return;
     }
 
@@ -387,10 +478,22 @@ void VoiceClient::handleIncomingAudioPacket(const QByteArray &packet)
 
     plaintext.resize(static_cast<int>(plaintextLen));
 
-    m_receivedFrameCount++;
-    if (m_receivedFrameCount % 50 == 1) {
-        log(QString("Successfully decoded %1 incoming audio frames").arg(m_receivedFrameCount));
+    QByteArray realOpus = plaintext;
+    if (channelUsesDave) {
+        QByteArray daveDecrypted = m_dave.decryptOpusFrame(senderSsrc, plaintext);
+        if (daveDecrypted.isEmpty()) {
+            log(QString("Audio packet dropped: DAVE decrypt failed/unavailable for ssrc=%1 (userId known=%2)")
+                    .arg(senderSsrc).arg(m_dave.hasUserIdForSsrc(senderSsrc) ? "yes" : "no"));
+            return; // our DAVE transition isn't ready yet, or genuinely failed - drop rather than play garbage
+        }
+        realOpus = daveDecrypted;
     }
 
-    m_audio.feedIncomingOpus(plaintext);
+    m_receivedFrameCount++;
+    if (m_receivedFrameCount % 50 == 1) {
+        log(QString("Successfully decoded %1 incoming audio frames (dave=%2)")
+                .arg(m_receivedFrameCount).arg(channelUsesDave ? "yes" : "no"));
+    }
+
+    m_audio.feedIncomingOpus(realOpus);
 }

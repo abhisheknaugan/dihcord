@@ -488,6 +488,12 @@
 			null
 		],
 		[
+			"C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/davesession.h",
+			"MU",
+			"UVLADIE3JM/moc_davesession.cpp",
+			null
+		],
+		[
 			"C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/equalizer.h",
 			"MU",
 			"UVLADIE3JM/moc_equalizer.cpp",
@@ -581,6 +587,8 @@
 	[
 		"C:/msys64/mingw64/include",
 		"C:/msys64/mingw64/include/opus",
+		"C:/Users/abhis/Downloads/libdave/cpp/includes",
+		"C:/Users/abhis/Downloads/libdave/cpp/vcpkg/installed/x64-mingw-dynamic/include",
 		"C:/Qt/6.11.1/mingw_64/include/QtCore",
 		"C:/Qt/6.11.1/mingw_64/include",
 		"C:/Qt/6.11.1/mingw_64/mkspecs/win32-g++",
@@ -632,6 +640,11 @@
 	[
 		[
 			"C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/audioengine.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/davesession.cpp",
 			"MU",
 			null
 		],

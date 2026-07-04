@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/mocs_compilation.cpp" "CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj" "gcc" "CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj.d"
   "C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/audioengine.cpp" "CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj" "gcc" "CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj.d"
+  "C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/davesession.cpp" "CMakeFiles/RipcordAlt.dir/src/davesession.cpp.obj" "gcc" "CMakeFiles/RipcordAlt.dir/src/davesession.cpp.obj.d"
   "C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/equalizer.cpp" "CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj" "gcc" "CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj.d"
   "C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/gatewayclient.cpp" "CMakeFiles/RipcordAlt.dir/src/gatewayclient.cpp.obj" "gcc" "CMakeFiles/RipcordAlt.dir/src/gatewayclient.cpp.obj.d"
   "C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/logindialog.cpp" "CMakeFiles/RipcordAlt.dir/src/logindialog.cpp.obj" "gcc" "CMakeFiles/RipcordAlt.dir/src/logindialog.cpp.obj.d"

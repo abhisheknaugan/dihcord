@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/RipcordAlt.dir/RipcordAlt_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj"
   "CMakeFiles/RipcordAlt.dir/src/audioengine.cpp.obj.d"
+  "CMakeFiles/RipcordAlt.dir/src/davesession.cpp.obj"
+  "CMakeFiles/RipcordAlt.dir/src/davesession.cpp.obj.d"
   "CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj"
   "CMakeFiles/RipcordAlt.dir/src/equalizer.cpp.obj.d"
   "CMakeFiles/RipcordAlt.dir/src/gatewayclient.cpp.obj"
