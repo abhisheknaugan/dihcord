@@ -394,6 +394,30 @@ src/profiledialog.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/profiledialog.cpp.s
 .PHONY : src/profiledialog.cpp.s
 
+src/profileviewdialog.obj: src/profileviewdialog.cpp.obj
+.PHONY : src/profileviewdialog.obj
+
+# target to build an object file
+src/profileviewdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/profileviewdialog.cpp.obj
+.PHONY : src/profileviewdialog.cpp.obj
+
+src/profileviewdialog.i: src/profileviewdialog.cpp.i
+.PHONY : src/profileviewdialog.i
+
+# target to preprocess a source file
+src/profileviewdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/profileviewdialog.cpp.i
+.PHONY : src/profileviewdialog.cpp.i
+
+src/profileviewdialog.s: src/profileviewdialog.cpp.s
+.PHONY : src/profileviewdialog.s
+
+# target to generate assembly for a file
+src/profileviewdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/profileviewdialog.cpp.s
+.PHONY : src/profileviewdialog.cpp.s
+
 src/restclient.obj: src/restclient.cpp.obj
 .PHONY : src/restclient.obj
 
@@ -417,6 +441,30 @@ src/restclient.s: src/restclient.cpp.s
 src/restclient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/restclient.cpp.s
 .PHONY : src/restclient.cpp.s
+
+src/serverprofiledialog.obj: src/serverprofiledialog.cpp.obj
+.PHONY : src/serverprofiledialog.obj
+
+# target to build an object file
+src/serverprofiledialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/serverprofiledialog.cpp.obj
+.PHONY : src/serverprofiledialog.cpp.obj
+
+src/serverprofiledialog.i: src/serverprofiledialog.cpp.i
+.PHONY : src/serverprofiledialog.i
+
+# target to preprocess a source file
+src/serverprofiledialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/serverprofiledialog.cpp.i
+.PHONY : src/serverprofiledialog.cpp.i
+
+src/serverprofiledialog.s: src/serverprofiledialog.cpp.s
+.PHONY : src/serverprofiledialog.s
+
+# target to generate assembly for a file
+src/serverprofiledialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RipcordAlt.dir\build.make CMakeFiles/RipcordAlt.dir/src/serverprofiledialog.cpp.s
+.PHONY : src/serverprofiledialog.cpp.s
 
 src/tokenstore.obj: src/tokenstore.cpp.obj
 .PHONY : src/tokenstore.obj
@@ -531,9 +579,15 @@ help:
 	@echo ... src/profiledialog.obj
 	@echo ... src/profiledialog.i
 	@echo ... src/profiledialog.s
+	@echo ... src/profileviewdialog.obj
+	@echo ... src/profileviewdialog.i
+	@echo ... src/profileviewdialog.s
 	@echo ... src/restclient.obj
 	@echo ... src/restclient.i
 	@echo ... src/restclient.s
+	@echo ... src/serverprofiledialog.obj
+	@echo ... src/serverprofiledialog.i
+	@echo ... src/serverprofiledialog.s
 	@echo ... src/tokenstore.obj
 	@echo ... src/tokenstore.i
 	@echo ... src/tokenstore.s

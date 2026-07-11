@@ -7,7 +7,9 @@
 
 #include "gatewayclient.h"
 #include "processwatcher.h"
+#include "profileviewdialog.h"
 #include "restclient.h"
+#include "serverprofiledialog.h"
 #include "voiceclient.h"
 #include "voicesettingsdialog.h"
 
@@ -69,8 +71,21 @@ private slots:
     void onDisconnectVoiceClicked();
     void onVoiceSettingsClicked();
 
+    // Members, friends, DMs, profiles (Phase 7)
+    void onMemberClicked(QListWidgetItem *item);
+    void onServerInfoClicked();
+    void onRelationshipsFetched(const QJsonArray &friends);
+    void onDMChannelsFetched(const QJsonArray &channels);
+    void onDMOpened(const QJsonObject &channel);
+    void onUserProfileFetched(const QJsonObject &user);
+    void onUserProfileFetchFailed(const QString &reason);
+    void onMessageProfileRequested(const QString &userId);
+
 private:
     void populateChannelsForGuild(const QString &guildId);
+    void populateMemberList(const QString &guildId);
+    void populateFriendsAndDMs();
+    void openDMChannel(const QJsonObject &dmChannel);
     void appendMessageToView(const QJsonObject &message);
 
     RestClient *m_rest;
@@ -99,13 +114,22 @@ private:
     QPushButton *m_disconnectVoiceButton;
     QPushButton *m_voiceSettingsButton;
 
+    // Member list panel (per server) + server info button
+    QListWidget *m_memberList;
+    QPushButton *m_serverInfoButton;
+
     QString m_token;
     QString m_selectedChannelId;
     QJsonObject m_currentUser;
     QString m_currentActivityName; // empty if not currently "playing" anything
 
     QMap<QString, QJsonArray> m_guildChannels;
-    QMap<QString, QJsonArray> m_guildVoiceStates; // guildId -> voice_states array from GUILD_CREATE/READY
+    QMap<QString, QJsonArray> m_guildVoiceStates;
+    QMap<QString, QJsonArray> m_guildMembers;
+    QMap<QString, QJsonObject> m_fullGuildData; // for server info popup // guildId -> members array from GUILD_CREATE
+    QJsonArray m_friendsList;
+    QJsonArray m_dmChannels;
+    bool m_viewingFriends = false; // guildId -> voice_states array from GUILD_CREATE/READY
 
     // Voice join is a two-part async handshake on the main gateway -
     // VOICE_STATE_UPDATE gives us session_id, VOICE_SERVER_UPDATE gives

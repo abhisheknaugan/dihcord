@@ -12,6 +12,10 @@ hood.
   we don't try to solve it).
 - **Servers & channels**: guild list via REST, channel list per guild via
   the gateway's `GUILD_CREATE` payloads (text channels only for now).
+  Because Discord lazy-loads guild data for accounts in many servers, the
+  client sends an explicit "guild subscription" request (gateway opcode
+  14) the moment you click a server - without this, servers just sit in
+  an "unavailable" state forever and their channels never arrive.
 - **Messages**: full history load when you open a channel
   (`GET /channels/{id}/messages`), live incoming messages via the
   gateway's `MESSAGE_CREATE` dispatch, and sending
@@ -29,6 +33,18 @@ hood.
   list every 10 seconds via `CreateToolhelp32Snapshot`, and automatically
   sends a "Playing X" presence update when a match starts or stops
   running. No hooks, no injected code, no GPU — just a process name scan.
+
+- **Voice channels (signaling only, no audio yet)**: clicking a voice
+  channel sends a real Voice State Update to Discord's main gateway,
+  receives back a voice server assignment, connects to Discord's
+  separate voice WebSocket gateway, identifies, and performs the UDP "IP
+  discovery" handshake exactly like the real client - ending with a
+  genuine `secret_key` from Discord ready to encrypt audio with. No audio
+  is captured, encoded, encrypted, or sent yet - that's Phase B/C, and
+  needs two new native libraries (Opus for the codec, libsodium for
+  encryption) not yet part of this project. Every step writes to
+  `gateway-debug.log` (prefixed `[voice]`) so it can be verified
+  independently.
 
 ## Build (Windows, Qt6, CMake)
 

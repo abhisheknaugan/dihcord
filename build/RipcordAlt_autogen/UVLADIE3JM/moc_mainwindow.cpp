@@ -88,7 +88,19 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onMuteClicked",
         "onDeafenClicked",
         "onDisconnectVoiceClicked",
-        "onVoiceSettingsClicked"
+        "onVoiceSettingsClicked",
+        "onMemberClicked",
+        "onServerInfoClicked",
+        "onRelationshipsFetched",
+        "friends",
+        "onDMChannelsFetched",
+        "channels",
+        "onDMOpened",
+        "channel",
+        "onUserProfileFetched",
+        "onUserProfileFetchFailed",
+        "onMessageProfileRequested",
+        "userId"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -192,6 +204,36 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(49, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onVoiceSettingsClicked'
         QtMocHelpers::SlotData<void()>(50, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onMemberClicked'
+        QtMocHelpers::SlotData<void(QListWidgetItem *)>(51, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 13, 14 },
+        }}),
+        // Slot 'onServerInfoClicked'
+        QtMocHelpers::SlotData<void()>(52, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onRelationshipsFetched'
+        QtMocHelpers::SlotData<void(const QJsonArray &)>(53, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 20, 54 },
+        }}),
+        // Slot 'onDMChannelsFetched'
+        QtMocHelpers::SlotData<void(const QJsonArray &)>(55, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 20, 56 },
+        }}),
+        // Slot 'onDMOpened'
+        QtMocHelpers::SlotData<void(const QJsonObject &)>(57, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 7, 58 },
+        }}),
+        // Slot 'onUserProfileFetched'
+        QtMocHelpers::SlotData<void(const QJsonObject &)>(59, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 7, 25 },
+        }}),
+        // Slot 'onUserProfileFetchFailed'
+        QtMocHelpers::SlotData<void(const QString &)>(60, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 5 },
+        }}),
+        // Slot 'onMessageProfileRequested'
+        QtMocHelpers::SlotData<void(const QString &)>(61, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 62 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -244,6 +286,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 26: _t->onDeafenClicked(); break;
         case 27: _t->onDisconnectVoiceClicked(); break;
         case 28: _t->onVoiceSettingsClicked(); break;
+        case 29: _t->onMemberClicked((*reinterpret_cast<std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
+        case 30: _t->onServerInfoClicked(); break;
+        case 31: _t->onRelationshipsFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
+        case 32: _t->onDMChannelsFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
+        case 33: _t->onDMOpened((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 34: _t->onUserProfileFetched((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 35: _t->onUserProfileFetchFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 36: _t->onMessageProfileRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -268,14 +318,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 37;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 37)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 29;
+        _id -= 37;
     }
     return _id;
 }

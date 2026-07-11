@@ -65,7 +65,15 @@ template <> constexpr inline auto RestClient::qt_create_metaobjectdata<qt_meta_t
         "profileUpdateFailed",
         "detectableGamesFetched",
         "games",
-        "detectableGamesFetchFailed"
+        "detectableGamesFetchFailed",
+        "relationshipsFetched",
+        "friends",
+        "dmChannelsFetched",
+        "channels",
+        "dmOpened",
+        "channel",
+        "userProfileFetched",
+        "userProfileFetchFailed"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -127,6 +135,26 @@ template <> constexpr inline auto RestClient::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SignalData<void(const QString &)>(27, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 8 },
         }}),
+        // Signal 'relationshipsFetched'
+        QtMocHelpers::SignalData<void(const QJsonArray &)>(28, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 14, 29 },
+        }}),
+        // Signal 'dmChannelsFetched'
+        QtMocHelpers::SignalData<void(const QJsonArray &)>(30, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 14, 31 },
+        }}),
+        // Signal 'dmOpened'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(32, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 19, 33 },
+        }}),
+        // Signal 'userProfileFetched'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(34, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 19, 20 },
+        }}),
+        // Signal 'userProfileFetchFailed'
+        QtMocHelpers::SignalData<void(const QString &)>(35, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 8 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -165,6 +193,11 @@ void RestClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->profileUpdateFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 13: _t->detectableGamesFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
         case 14: _t->detectableGamesFetchFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 15: _t->relationshipsFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
+        case 16: _t->dmChannelsFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
+        case 17: _t->dmOpened((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 18: _t->userProfileFetched((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 19: _t->userProfileFetchFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -199,6 +232,16 @@ void RestClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             return;
         if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QString & )>(_a, &RestClient::detectableGamesFetchFailed, 14))
             return;
+        if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QJsonArray & )>(_a, &RestClient::relationshipsFetched, 15))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QJsonArray & )>(_a, &RestClient::dmChannelsFetched, 16))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QJsonObject & )>(_a, &RestClient::dmOpened, 17))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QJsonObject & )>(_a, &RestClient::userProfileFetched, 18))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QString & )>(_a, &RestClient::userProfileFetchFailed, 19))
+            return;
     }
 }
 
@@ -221,14 +264,14 @@ int RestClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 20;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 20)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 15;
+        _id -= 20;
     }
     return _id;
 }
@@ -321,5 +364,35 @@ void RestClient::detectableGamesFetched(const QJsonArray & _t1)
 void RestClient::detectableGamesFetchFailed(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 14, nullptr, _t1);
+}
+
+// SIGNAL 15
+void RestClient::relationshipsFetched(const QJsonArray & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 15, nullptr, _t1);
+}
+
+// SIGNAL 16
+void RestClient::dmChannelsFetched(const QJsonArray & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 16, nullptr, _t1);
+}
+
+// SIGNAL 17
+void RestClient::dmOpened(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 17, nullptr, _t1);
+}
+
+// SIGNAL 18
+void RestClient::userProfileFetched(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 18, nullptr, _t1);
+}
+
+// SIGNAL 19
+void RestClient::userProfileFetchFailed(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 19, nullptr, _t1);
 }
 QT_WARNING_POP

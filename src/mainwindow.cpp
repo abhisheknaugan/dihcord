@@ -45,16 +45,20 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     m_statusCombo->addItem("Invisible", "invisible");
 
     m_editProfileButton = new QPushButton("Edit profile");
+    m_serverInfoButton = new QPushButton("Server Info");
+    m_serverInfoButton->setEnabled(false);
 
     profileBar->addWidget(m_usernameLabel);
     profileBar->addWidget(m_playingLabel);
     profileBar->addStretch();
     profileBar->addWidget(m_statusCombo);
+    profileBar->addWidget(m_serverInfoButton);
     profileBar->addWidget(m_editProfileButton);
     rootLayout->addLayout(profileBar);
 
     connect(m_statusCombo, &QComboBox::currentIndexChanged, this, &MainWindow::onStatusChanged);
     connect(m_editProfileButton, &QPushButton::clicked, this, &MainWindow::onEditProfileClicked);
+    connect(m_serverInfoButton, &QPushButton::clicked, this, &MainWindow::onServerInfoClicked);
 
     // --- Main three-pane splitter ---
     auto *splitter = new QSplitter();
@@ -81,6 +85,10 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     splitter->addWidget(m_channelList);
     splitter->addWidget(messagePane);
     splitter->setStretchFactor(2, 1);
+
+    m_memberList = new QListWidget();
+    splitter->addWidget(m_memberList);
+    connect(m_memberList, &QListWidget::itemClicked, this, &MainWindow::onMemberClicked);
 
     rootLayout->addWidget(splitter);
 
@@ -133,6 +141,14 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     m_rest->fetchCurrentUser(m_token);
     m_rest->fetchDetectableGames();
 
+    connect(m_rest, &RestClient::relationshipsFetched, this, &MainWindow::onRelationshipsFetched);
+    connect(m_rest, &RestClient::dmChannelsFetched, this, &MainWindow::onDMChannelsFetched);
+    connect(m_rest, &RestClient::dmOpened, this, &MainWindow::onDMOpened);
+    connect(m_rest, &RestClient::userProfileFetched, this, &MainWindow::onUserProfileFetched);
+    connect(m_rest, &RestClient::userProfileFetchFailed, this, &MainWindow::onUserProfileFetchFailed);
+    m_rest->fetchRelationships(m_token);
+    m_rest->fetchDMChannels(m_token);
+
     // --- Gateway wiring ---
     connect(m_gateway, &GatewayClient::ready, this, &MainWindow::onGatewayReady);
     connect(m_gateway, &GatewayClient::guildAvailable, this, &MainWindow::onGuildAvailable);
@@ -165,6 +181,11 @@ void MainWindow::onGuildsFetched(const QByteArray &jsonPayload)
 {
     QJsonArray guilds = QJsonDocument::fromJson(jsonPayload).array();
     m_guildList->clear();
+
+    auto *friendsItem = new QListWidgetItem(QString::fromUtf8("\xF0\x9F\x91\xA5 Friends & DMs"));
+    friendsItem->setData(Qt::UserRole, "@friends");
+    m_guildList->addItem(friendsItem);
+
     for (const QJsonValue &v : guilds) {
         QJsonObject g = v.toObject();
         auto *item = new QListWidgetItem(g.value("name").toString());
@@ -189,10 +210,13 @@ void MainWindow::onGuildAvailable(const QJsonObject &guild)
     QString guildId = guild.value("id").toString();
     m_guildChannels[guildId] = guild.value("channels").toArray();
     m_guildVoiceStates[guildId] = guild.value("voice_states").toArray();
+    m_guildMembers[guildId] = guild.value("members").toArray();
+    m_fullGuildData[guildId] = guild;
 
     QListWidgetItem *current = m_guildList->currentItem();
     if (current && current->data(Qt::UserRole).toString() == guildId) {
         populateChannelsForGuild(guildId);
+        populateMemberList(guildId);
     }
 }
 
@@ -204,10 +228,22 @@ void MainWindow::onGatewayError(const QString &reason)
 void MainWindow::onGuildSelected(QListWidgetItem *item)
 {
     QString guildId = item->data(Qt::UserRole).toString();
+
+    if (guildId == "@friends") {
+        m_viewingFriends = true;
+        m_serverInfoButton->setEnabled(false);
+        m_memberList->clear();
+        populateFriendsAndDMs();
+        return;
+    }
+
+    m_viewingFriends = false;
+    m_serverInfoButton->setEnabled(true);
     // Ask Discord to actually push this guild's data - see
     // GatewayClient::requestGuildSubscription for why this is needed.
     m_gateway->requestGuildSubscription(guildId);
     populateChannelsForGuild(guildId);
+    populateMemberList(guildId);
 }
 
 void MainWindow::populateChannelsForGuild(const QString &guildId)
@@ -251,6 +287,12 @@ void MainWindow::onChannelSelected(QListWidgetItem *item)
     }
 
     QString channelType = item->data(Qt::UserRole + 1).toString();
+
+    if (channelType == "friend") {
+        m_rest->createOrOpenDM(m_token, channelId); // channelId here actually holds the user id
+        return;
+    }
+
     if (channelType == "voice") {
         QListWidgetItem *guildItem = m_guildList->currentItem();
         if (!guildItem) {
@@ -549,8 +591,168 @@ void MainWindow::onVoiceLog(const QString &line)
 {
     // Route voice-specific log lines into the same debug log file the
     // gateway uses, so both handshakes can be read together chronologically.
-    QFile f("gateway-debug.log");
-    f.open(QIODevice::Append | QIODevice::Text);
+    static QFile f("gateway-debug.log");
+    if (!f.isOpen()) {
+        f.open(QIODevice::Append | QIODevice::Text);
+    }
     QTextStream out(&f);
     out << QDateTime::currentDateTime().toString("hh:mm:ss.zzz") << "  [voice] " << line << "\n";
+    out.flush();
+}
+
+// ---------------- Members, friends, DMs, profiles ----------------
+
+void MainWindow::populateMemberList(const QString &guildId)
+{
+    m_memberList->clear();
+    const QJsonArray members = m_guildMembers.value(guildId);
+    for (const QJsonValue &v : members) {
+        QJsonObject member = v.toObject();
+        QJsonObject user = member.value("user").toObject();
+        QString displayName = member.value("nick").toString();
+        if (displayName.isEmpty()) {
+            displayName = user.value("global_name").toString();
+        }
+        if (displayName.isEmpty()) {
+            displayName = user.value("username").toString();
+        }
+        if (displayName.isEmpty()) {
+            continue; // skip malformed entries rather than show a blank row
+        }
+        auto *item = new QListWidgetItem(displayName);
+        item->setData(Qt::UserRole, user.value("id").toString());
+        m_memberList->addItem(item);
+    }
+    if (members.isEmpty()) {
+        m_memberList->addItem("(member list not available for this server yet)");
+    }
+}
+
+void MainWindow::populateFriendsAndDMs()
+{
+    m_channelList->clear();
+    m_messageView->clear();
+    m_selectedChannelId.clear();
+    m_messageInput->setEnabled(false);
+    m_sendButton->setEnabled(false);
+
+    if (!m_dmChannels.isEmpty()) {
+        auto *dmHeader = new QListWidgetItem("— Direct Messages —");
+        dmHeader->setFlags(Qt::NoItemFlags);
+        m_channelList->addItem(dmHeader);
+
+        for (const QJsonValue &v : m_dmChannels) {
+            QJsonObject dm = v.toObject();
+            QJsonArray recipients = dm.value("recipients").toArray();
+            QString label = "(empty DM)";
+            if (!recipients.isEmpty()) {
+                label = recipients.first().toObject().value("username").toString();
+            }
+            auto *item = new QListWidgetItem(label);
+            item->setData(Qt::UserRole, dm.value("id").toString());
+            item->setData(Qt::UserRole + 1, "dm");
+            m_channelList->addItem(item);
+        }
+    }
+
+    if (!m_friendsList.isEmpty()) {
+        auto *friendsHeader = new QListWidgetItem("— Friends —");
+        friendsHeader->setFlags(Qt::NoItemFlags);
+        m_channelList->addItem(friendsHeader);
+
+        for (const QJsonValue &v : m_friendsList) {
+            QJsonObject rel = v.toObject();
+            if (rel.value("type").toInt() != 1) {
+                continue; // 1 = accepted friend; skip pending/blocked for this simple list
+            }
+            QJsonObject user = rel.value("user").toObject();
+            auto *item = new QListWidgetItem(user.value("username").toString());
+            item->setData(Qt::UserRole, user.value("id").toString());
+            item->setData(Qt::UserRole + 1, "friend");
+            m_channelList->addItem(item);
+        }
+    }
+}
+
+void MainWindow::openDMChannel(const QJsonObject &dmChannel)
+{
+    m_selectedChannelId = dmChannel.value("id").toString();
+    m_messageView->clear();
+    m_messageView->addItem("Loading messages...");
+    m_messageInput->setEnabled(true);
+    m_sendButton->setEnabled(true);
+    m_messageInput->setFocus();
+    m_rest->fetchMessages(m_token, m_selectedChannelId);
+}
+
+void MainWindow::onMemberClicked(QListWidgetItem *item)
+{
+    QString userId = item->data(Qt::UserRole).toString();
+    if (userId.isEmpty()) {
+        return;
+    }
+    m_rest->fetchUserById(m_token, userId);
+}
+
+void MainWindow::onServerInfoClicked()
+{
+    QListWidgetItem *current = m_guildList->currentItem();
+    if (!current) return;
+    QString guildId = current->data(Qt::UserRole).toString();
+    if (guildId == "@friends" || !m_fullGuildData.contains(guildId)) return;
+
+    auto *dialog = new ServerProfileDialog(m_fullGuildData.value(guildId), this);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->show();
+}
+
+void MainWindow::onRelationshipsFetched(const QJsonArray &friends)
+{
+    m_friendsList = friends;
+    if (m_viewingFriends) {
+        populateFriendsAndDMs();
+    }
+}
+
+void MainWindow::onDMChannelsFetched(const QJsonArray &channels)
+{
+    m_dmChannels = channels;
+    if (m_viewingFriends) {
+        populateFriendsAndDMs();
+    }
+}
+
+void MainWindow::onDMOpened(const QJsonObject &channel)
+{
+    // Add to our cached list if it's new, then open it.
+    QString channelId = channel.value("id").toString();
+    bool alreadyKnown = false;
+    for (const QJsonValue &v : m_dmChannels) {
+        if (v.toObject().value("id").toString() == channelId) {
+            alreadyKnown = true;
+            break;
+        }
+    }
+    if (!alreadyKnown) {
+        m_dmChannels.append(channel);
+    }
+    openDMChannel(channel);
+}
+
+void MainWindow::onUserProfileFetched(const QJsonObject &user)
+{
+    auto *dialog = new ProfileViewDialog(user, this);
+    connect(dialog, &ProfileViewDialog::messageRequested, this, &MainWindow::onMessageProfileRequested);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->show();
+}
+
+void MainWindow::onUserProfileFetchFailed(const QString &reason)
+{
+    statusBar()->showMessage("Couldn't load profile: " + reason, 5000);
+}
+
+void MainWindow::onMessageProfileRequested(const QString &userId)
+{
+    m_rest->createOrOpenDM(m_token, userId);
 }

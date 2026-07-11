@@ -6,6 +6,8 @@
 #include "UVLADIE3JM/moc_mainwindow.cpp"
 #include "UVLADIE3JM/moc_processwatcher.cpp"
 #include "UVLADIE3JM/moc_profiledialog.cpp"
+#include "UVLADIE3JM/moc_profileviewdialog.cpp"
 #include "UVLADIE3JM/moc_restclient.cpp"
+#include "UVLADIE3JM/moc_serverprofiledialog.cpp"
 #include "UVLADIE3JM/moc_voiceclient.cpp"
 #include "UVLADIE3JM/moc_voicesettingsdialog.cpp"

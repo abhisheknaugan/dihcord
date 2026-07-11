@@ -31,6 +31,8 @@ set(SOURCES
     src/equalizer.cpp
     src/voicesettingsdialog.cpp
     src/davesession.cpp
+    src/profileviewdialog.cpp
+    src/serverprofiledialog.cpp
 )
 
 set(HEADERS
@@ -46,6 +48,8 @@ set(HEADERS
     src/equalizer.h
     src/voicesettingsdialog.h
     src/davesession.h
+    src/profileviewdialog.h
+    src/serverprofiledialog.h
 )
 
 add_executable(RipcordAlt WIN32 ${SOURCES} ${HEADERS})

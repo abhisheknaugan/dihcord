@@ -113,9 +113,15 @@ void VoiceClient::onSocketConnected()
 
 void VoiceClient::onSocketDisconnected()
 {
+    int closeCode = static_cast<int>(m_socket->closeCode());
     log(QString("Voice WebSocket disconnected - close code: %1, reason: \"%2\"")
-            .arg(static_cast<int>(m_socket->closeCode()))
-            .arg(m_socket->closeReason()));
+            .arg(closeCode).arg(m_socket->closeReason()));
+
+    if (closeCode == 4017) {
+        emit voiceError("This voice channel requires end-to-end encryption (DAVE), "
+                         "which isn't supported yet - try a different channel.");
+    }
+
     m_heartbeatTimer->stop();
     m_audio.stopCapture();
     m_audio.stopPlayback();
@@ -301,12 +307,6 @@ void VoiceClient::onUdpReadyRead()
         QNetworkDatagram datagram = m_udpSocket->receiveDatagram();
         QByteArray reply = datagram.data();
 
-        log(QString("UDP packet received: %1 bytes from %2:%3, first byte=0x%4")
-                .arg(reply.size())
-                .arg(datagram.senderAddress().toString())
-                .arg(datagram.senderPort())
-                .arg(static_cast<unsigned char>(reply.isEmpty() ? 0 : reply[0]), 2, 16, QChar('0')));
-
         if (reply.size() == 74 && static_cast<unsigned char>(reply[0]) == 0x00
             && static_cast<unsigned char>(reply[1]) == 0x02) {
             QByteArray addressBytes = reply.mid(8, 64);
@@ -482,8 +482,11 @@ void VoiceClient::handleIncomingAudioPacket(const QByteArray &packet)
     if (channelUsesDave) {
         QByteArray daveDecrypted = m_dave.decryptOpusFrame(senderSsrc, plaintext);
         if (daveDecrypted.isEmpty()) {
-            log(QString("Audio packet dropped: DAVE decrypt failed/unavailable for ssrc=%1 (userId known=%2)")
-                    .arg(senderSsrc).arg(m_dave.hasUserIdForSsrc(senderSsrc) ? "yes" : "no"));
+            m_decryptFailCount++;
+            if (m_decryptFailCount % 50 == 1) {
+                log(QString("Audio packet dropped: DAVE decrypt failed/unavailable for ssrc=%1 (userId known=%2, count=%3)")
+                        .arg(senderSsrc).arg(m_dave.hasUserIdForSsrc(senderSsrc) ? "yes" : "no").arg(m_decryptFailCount));
+            }
             return; // our DAVE transition isn't ready yet, or genuinely failed - drop rather than play garbage
         }
         realOpus = daveDecrypted;

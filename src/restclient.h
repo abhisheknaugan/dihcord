@@ -40,6 +40,29 @@ public:
     // executable names to match against. No auth required.
     void fetchDetectableGames();
 
+    // --- Friends & DMs (Phase 6) ---
+    void fetchRelationships(const QString &token); // friends list
+    void fetchDMChannels(const QString &token);
+    void createOrOpenDM(const QString &token, const QString &recipientUserId);
+    void fetchUserById(const QString &token, const QString &userId);
+
+    // --- Message actions (Phase 8) ---
+    void sendMessageWithReply(const QString &token, const QString &channelId, const QString &content,
+                               const QString &replyToMessageId);
+    void editMessage(const QString &token, const QString &channelId, const QString &messageId,
+                      const QString &newContent);
+    void deleteMessage(const QString &token, const QString &channelId, const QString &messageId);
+    void fetchPinnedMessages(const QString &token, const QString &channelId);
+    void sendTypingIndicator(const QString &token, const QString &channelId);
+    void ackMessage(const QString &token, const QString &channelId, const QString &messageId);
+
+    // --- Invites & friends (Phase 8) ---
+    void joinGuildViaInvite(const QString &token, const QString &inviteCode);
+    void addFriendByUsername(const QString &token, const QString &username);
+    void respondToFriendRequest(const QString &token, const QString &userId, bool accept);
+    void removeFriend(const QString &token, const QString &userId);
+    void blockUser(const QString &token, const QString &userId); // for profile popups
+
 signals:
     void loginSucceeded(const QString &token);
     void mfaRequired(const QString &ticket);
@@ -60,6 +83,12 @@ signals:
 
     void detectableGamesFetched(const QJsonArray &games);
     void detectableGamesFetchFailed(const QString &reason);
+
+    void relationshipsFetched(const QJsonArray &friends);
+    void dmChannelsFetched(const QJsonArray &channels);
+    void dmOpened(const QJsonObject &channel);
+    void userProfileFetched(const QJsonObject &user);
+    void userProfileFetchFailed(const QString &reason);
 
 private:
     void handleLoginReply(QNetworkReply *reply);

@@ -12,10 +12,13 @@ constexpr const char *kGatewayUrl = "wss://gateway.discord.gg/?v=10&encoding=jso
 
 void GatewayClient::log(const QString &line)
 {
-    QFile f("gateway-debug.log");
-    f.open(QIODevice::Append | QIODevice::Text);
+    static QFile f("gateway-debug.log");
+    if (!f.isOpen()) {
+        f.open(QIODevice::Append | QIODevice::Text);
+    }
     QTextStream out(&f);
     out << QDateTime::currentDateTime().toString("hh:mm:ss.zzz") << "  " << line << "\n";
+    out.flush();
 }
 
 GatewayClient::GatewayClient(QObject *parent)
@@ -239,6 +242,7 @@ void GatewayClient::updatePresence(const QString &status, const QString &activit
         {"afk", false}
     };
 
+    log(QString("Sending presence update: status=%1, activity=%2").arg(status, activityName));
     send(QJsonObject{
         {"op", PresenceUpdate},
         {"d", data}

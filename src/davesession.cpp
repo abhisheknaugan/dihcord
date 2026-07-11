@@ -1,5 +1,6 @@
 #include "davesession.h"
 
+#include <QDateTime>
 #include <dave/dave.h>
 #include <cstring>
 
@@ -28,7 +29,7 @@ void DaveSession::mlsFailureCallback(const char *source, const char *reason, voi
 
 void DaveSession::logSinkCallback(int severity, const char *file, int line, const char *message)
 {
-    if (s_activeInstance && severity >= 1) { // skip verbose (0), keep info/warning/error
+    if (s_activeInstance && severity >= 2) { // only warning(2)/error(3+), skip verbose(0)/info(1) per-frame noise
         emit s_activeInstance->log(QString("libdave[%1] %2:%3 - %4")
                 .arg(severity).arg(file ? file : "?").arg(line).arg(message ? message : "?"));
     }
@@ -46,9 +47,15 @@ void DaveSession::reset()
     for (auto it = m_decryptorsByUserId.begin(); it != m_decryptorsByUserId.end(); ++it) {
         if (it.value()) daveDecryptorDestroy(it.value());
     }
+    for (auto it = m_decryptorRatchets.begin(); it != m_decryptorRatchets.end(); ++it) {
+        if (it.value()) daveKeyRatchetDestroy(it.value());
+    }
+    if (m_encryptorRatchet) daveKeyRatchetDestroy(m_encryptorRatchet);
     m_session = nullptr;
     m_encryptor = nullptr;
+    m_encryptorRatchet = nullptr;
     m_decryptorsByUserId.clear();
+    m_decryptorRatchets.clear();
     m_decryptorSsrcOwner.clear();
     m_ssrcToUserId.clear();
     m_pendingTransitionId = -1;
@@ -101,10 +108,15 @@ void DaveSession::reinit()
     for (auto it = m_decryptorsByUserId.begin(); it != m_decryptorsByUserId.end(); ++it) {
         if (it.value()) daveDecryptorDestroy(it.value());
     }
+    for (auto it = m_decryptorRatchets.begin(); it != m_decryptorRatchets.end(); ++it) {
+        if (it.value()) daveKeyRatchetDestroy(it.value());
+    }
     m_decryptorsByUserId.clear();
+    m_decryptorRatchets.clear();
     m_decryptorSsrcOwner.clear();
 
     if (m_encryptor) daveEncryptorDestroy(m_encryptor);
+    if (m_encryptorRatchet) { daveKeyRatchetDestroy(m_encryptorRatchet); m_encryptorRatchet = nullptr; }
     m_encryptor = daveEncryptorCreate();
     if (m_localSsrc) {
         daveEncryptorAssignSsrcToCodec(m_encryptor, m_localSsrc, DAVE_CODEC_OPUS);
@@ -174,14 +186,19 @@ void DaveSession::completeTransitionIfReady()
         return;
     }
     daveEncryptorSetKeyRatchet(m_encryptor, selfRatchet);
-    daveKeyRatchetDestroy(selfRatchet);
+    if (m_encryptorRatchet) {
+        daveKeyRatchetDestroy(m_encryptorRatchet); // safe to free now - encryptor has transitioned off it
+    }
+    m_encryptorRatchet = selfRatchet; // keep alive - encryptor holds a live reference, doesn't own it
 
     for (auto it = m_decryptorsByUserId.begin(); it != m_decryptorsByUserId.end(); ++it) {
         QByteArray uidBytes = it.key().toUtf8();
         DAVEKeyRatchetHandle ratchet = daveSessionGetKeyRatchet(m_session, uidBytes.constData());
         if (ratchet) {
             daveDecryptorTransitionToKeyRatchet(it.value(), ratchet);
-            daveKeyRatchetDestroy(ratchet);
+            DAVEKeyRatchetHandle old = m_decryptorRatchets.value(it.key(), nullptr);
+            if (old) daveKeyRatchetDestroy(old);
+            m_decryptorRatchets[it.key()] = ratchet;
         }
     }
 
@@ -330,7 +347,7 @@ DAVEDecryptorHandle DaveSession::decryptorForSsrc(uint32_t ssrc, const QString &
         DAVEKeyRatchetHandle ratchet = daveSessionGetKeyRatchet(m_session, uidBytes.constData());
         if (ratchet) {
             daveDecryptorTransitionToKeyRatchet(decryptor, ratchet);
-            daveKeyRatchetDestroy(ratchet);
+            m_decryptorRatchets[userId] = ratchet; // keep alive - decryptor holds a live reference, doesn't own it
         }
     }
     m_decryptorsByUserId[userId] = decryptor;
@@ -383,8 +400,11 @@ QByteArray DaveSession::decryptOpusFrame(uint32_t ssrc, const QByteArray &cipher
         reinterpret_cast<uint8_t *>(out.data()), out.size(), &written);
 
     if (result != DAVE_DECRYPTOR_RESULT_CODE_SUCCESS) {
-        emit log(QString("decryptOpusFrame: libdave decrypt failed for user %1, result code=%2")
-                .arg(userId).arg(static_cast<int>(result)));
+        m_decryptFailureCount++;
+        if (m_decryptFailureCount % 100 == 1) {
+            emit log(QString("decryptOpusFrame: libdave decrypt failed for user %1, result code=%2, total failures=%3")
+                    .arg(userId).arg(static_cast<int>(result)).arg(m_decryptFailureCount));
+        }
         return QByteArray();
     }
     out.resize(static_cast<int>(written));

@@ -198,3 +198,62 @@ void RestClient::fetchDetectableGames()
         reply->deleteLater();
     });
 }
+
+void RestClient::fetchRelationships(const QString &token)
+{
+    QUrl url(QString("%1/users/@me/relationships").arg(kApiBase));
+    QNetworkRequest req(url);
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QNetworkReply *reply = m_net->get(req);
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        emit relationshipsFetched(QJsonDocument::fromJson(reply->readAll()).array());
+        reply->deleteLater();
+    });
+}
+
+void RestClient::fetchDMChannels(const QString &token)
+{
+    QUrl url(QString("%1/users/@me/channels").arg(kApiBase));
+    QNetworkRequest req(url);
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QNetworkReply *reply = m_net->get(req);
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        emit dmChannelsFetched(QJsonDocument::fromJson(reply->readAll()).array());
+        reply->deleteLater();
+    });
+}
+
+void RestClient::createOrOpenDM(const QString &token, const QString &recipientUserId)
+{
+    QUrl url(QString("%1/users/@me/channels").arg(kApiBase));
+    QNetworkRequest req(url);
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QJsonObject body{{"recipient_id", recipientUserId}};
+
+    QNetworkReply *reply = m_net->post(req, QJsonDocument(body).toJson());
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        emit dmOpened(QJsonDocument::fromJson(reply->readAll()).object());
+        reply->deleteLater();
+    });
+}
+
+void RestClient::fetchUserById(const QString &token, const QString &userId)
+{
+    QUrl url(QString("%1/users/%2").arg(kApiBase, userId));
+    QNetworkRequest req(url);
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QNetworkReply *reply = m_net->get(req);
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        if (reply->error() != QNetworkReply::NoError) {
+            emit userProfileFetchFailed(reply->errorString());
+        } else {
+            emit userProfileFetched(QJsonDocument::fromJson(reply->readAll()).object());
+        }
+        reply->deleteLater();
+    });
+}

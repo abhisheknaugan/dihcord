@@ -12,6 +12,7 @@ extern "C" {
 typedef struct DAVESessionHandle_s* DAVESessionHandle;
 typedef struct DAVEEncryptorHandle_s* DAVEEncryptorHandle;
 typedef struct DAVEDecryptorHandle_s* DAVEDecryptorHandle;
+typedef struct DAVEKeyRatchetHandle_s* DAVEKeyRatchetHandle;
 }
 
 // Faithful C++ port of the proven DAVE/MLS orchestration sequence (call
@@ -92,7 +93,11 @@ private:
     QMap<uint32_t, QString> m_ssrcToUserId;
     QSet<QString> m_knownMembers; // everyone actually in the channel, from VOICE_STATE_UPDATE
     QMap<QString, DAVEDecryptorHandle> m_decryptorsByUserId;
-    QMap<uint32_t, QString> m_decryptorSsrcOwner; // which userId's decryptor is bound to this ssrc
+    QMap<QString, DAVEKeyRatchetHandle> m_decryptorRatchets; // must stay alive as long as the decryptor uses them
+    DAVEKeyRatchetHandle m_encryptorRatchet = nullptr;       // same - encryptor keeps a live reference, doesn't own it
+    QMap<uint32_t, QString> m_decryptorSsrcOwner;
+    QMap<QString, qint64> m_lastRatchetRefreshMs;
+    int m_decryptFailureCount = 0; // rate-limits expensive ratchet refresh per user // which userId's decryptor is bound to this ssrc
 
     uint16_t m_protocolVersion = 0;
     uint16_t m_pendingProtocolVersion = 0;

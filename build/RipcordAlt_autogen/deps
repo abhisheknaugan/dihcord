@@ -127,8 +127,12 @@ RipcordAlt_autogen/timestamp: \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/processwatcher.h \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/profiledialog.cpp \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/profiledialog.h \
+	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/profileviewdialog.cpp \
+	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/profileviewdialog.h \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/restclient.cpp \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/restclient.h \
+	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/serverprofiledialog.cpp \
+	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/serverprofiledialog.h \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/tokenstore.cpp \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/tokenstore.h \
 	C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voiceclient.cpp \

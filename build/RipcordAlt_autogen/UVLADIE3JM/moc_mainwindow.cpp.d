@@ -5,7 +5,9 @@ C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/RipcordAlt_autogen/UVLADI
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/equalizer.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/gatewayclient.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/processwatcher.h \
+  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/profileviewdialog.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/restclient.h \
+  C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/serverprofiledialog.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voiceclient.h \
   C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/src/voicesettingsdialog.h \
   C:/msys64/mingw64/include/_mingw.h \
