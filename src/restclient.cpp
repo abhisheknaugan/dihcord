@@ -257,3 +257,30 @@ void RestClient::fetchUserById(const QString &token, const QString &userId)
         reply->deleteLater();
     });
 }
+
+void RestClient::editMessage(const QString &token, const QString &channelId, const QString &messageId,
+                              const QString &newContent)
+{
+    QUrl url(QString("%1/channels/%2/messages/%3").arg(kApiBase, channelId, messageId));
+    QNetworkRequest req(url);
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QJsonObject body{{"content", newContent}};
+    QNetworkReply *reply = m_net->sendCustomRequest(req, "PATCH", QJsonDocument(body).toJson());
+    connect(reply, &QNetworkReply::finished, this, [reply]() {
+        reply->deleteLater(); // the edited message shows up via the gateway's own MESSAGE_UPDATE, no need to handle here
+    });
+}
+
+void RestClient::deleteMessage(const QString &token, const QString &channelId, const QString &messageId)
+{
+    QUrl url(QString("%1/channels/%2/messages/%3").arg(kApiBase, channelId, messageId));
+    QNetworkRequest req(url);
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QNetworkReply *reply = m_net->deleteResource(req);
+    connect(reply, &QNetworkReply::finished, this, [reply]() {
+        reply->deleteLater();
+    });
+}

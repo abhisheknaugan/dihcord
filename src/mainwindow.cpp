@@ -1,14 +1,18 @@
 #include "mainwindow.h"
 #include "profiledialog.h"
 
+#include <QApplication>
+#include <QClipboard>
 #include <QComboBox>
 #include <QDateTime>
 #include <QFile>
 #include <QHBoxLayout>
+#include <QInputDialog>
 #include <QJsonDocument>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
+#include <QMenu>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QSplitter>
@@ -69,6 +73,8 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     auto *messagePaneLayout = new QVBoxLayout(messagePane);
     messagePaneLayout->setContentsMargins(0, 0, 0, 0);
     m_messageView = new QListWidget();
+    m_messageView->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(m_messageView, &QListWidget::customContextMenuRequested, this, &MainWindow::onMessageContextMenu);
     messagePaneLayout->addWidget(m_messageView);
 
     auto *inputRow = new QHBoxLayout();
@@ -338,12 +344,19 @@ void MainWindow::onChannelSelected(QListWidgetItem *item)
 
 void MainWindow::appendMessageToView(const QJsonObject &message)
 {
-    QString author = message.value("author").toObject().value("username").toString();
+    QJsonObject authorObj = message.value("author").toObject();
+    QString author = authorObj.value("username").toString();
     QString content = message.value("content").toString();
-    if (content.isEmpty()) {
-        content = "(no text content - attachment/embed only, not rendered in this phase)";
+    QString displayContent = content;
+    if (displayContent.isEmpty()) {
+        displayContent = "(no text content - attachment/embed only, not rendered in this phase)";
     }
-    m_messageView->addItem(QString("%1: %2").arg(author, content));
+
+    auto *item = new QListWidgetItem(QString("%1: %2").arg(author, displayContent));
+    item->setData(Qt::UserRole, message.value("id").toString());
+    item->setData(Qt::UserRole + 1, authorObj.value("id").toString());
+    item->setData(Qt::UserRole + 2, content); // raw content, for editing/copying without the "author: " prefix
+    m_messageView->addItem(item);
 }
 
 void MainWindow::onMessagesFetched(const QString &channelId, const QJsonArray &messages)
@@ -755,4 +768,53 @@ void MainWindow::onUserProfileFetchFailed(const QString &reason)
 void MainWindow::onMessageProfileRequested(const QString &userId)
 {
     m_rest->createOrOpenDM(m_token, userId);
+}
+
+void MainWindow::onMessageContextMenu(const QPoint &pos)
+{
+    QListWidgetItem *item = m_messageView->itemAt(pos);
+    if (!item) return;
+
+    QString messageId = item->data(Qt::UserRole).toString();
+    QString authorId = item->data(Qt::UserRole + 1).toString();
+    QString rawContent = item->data(Qt::UserRole + 2).toString();
+    if (messageId.isEmpty()) return; // placeholder rows ("Loading...", etc) have no id
+
+    bool isOwnMessage = (authorId == m_currentUser.value("id").toString());
+
+    QMenu menu(this);
+    QAction *copyTextAction = menu.addAction("Copy Text");
+    QAction *copyLinkAction = menu.addAction("Copy Message Link");
+    QAction *editAction = isOwnMessage ? menu.addAction("Edit Message") : nullptr;
+    QAction *deleteAction = isOwnMessage ? menu.addAction("Delete Message") : nullptr;
+
+    QAction *chosen = menu.exec(m_messageView->mapToGlobal(pos));
+    if (!chosen) return;
+
+    if (chosen == copyTextAction) {
+        QApplication::clipboard()->setText(rawContent);
+        statusBar()->showMessage("Copied message text", 2000);
+    } else if (chosen == copyLinkAction) {
+        QListWidgetItem *guildItem = m_guildList->currentItem();
+        QString guildId = guildItem ? guildItem->data(Qt::UserRole).toString() : "@me";
+        QString link = QString("https://discord.com/channels/%1/%2/%3")
+                            .arg(guildId, m_selectedChannelId, messageId);
+        QApplication::clipboard()->setText(link);
+        statusBar()->showMessage("Copied message link", 2000);
+    } else if (chosen == editAction) {
+        bool ok = false;
+        QString newText = QInputDialog::getText(this, "Edit Message", "New content:",
+                                                  QLineEdit::Normal, rawContent, &ok);
+        if (ok && !newText.isEmpty() && newText != rawContent) {
+            m_rest->editMessage(m_token, m_selectedChannelId, messageId, newText);
+        }
+    } else if (chosen == deleteAction) {
+        auto reply = QMessageBox::question(this, "Delete Message",
+                                            "Delete this message? This can't be undone.",
+                                            QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            m_rest->deleteMessage(m_token, m_selectedChannelId, messageId);
+            delete item; // remove from view immediately, don't wait for a gateway echo
+        }
+    }
 }

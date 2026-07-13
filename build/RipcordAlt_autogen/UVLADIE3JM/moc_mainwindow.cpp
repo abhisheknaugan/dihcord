@@ -100,7 +100,10 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onUserProfileFetched",
         "onUserProfileFetchFailed",
         "onMessageProfileRequested",
-        "userId"
+        "userId",
+        "onMessageContextMenu",
+        "QPoint",
+        "pos"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -234,6 +237,10 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(const QString &)>(61, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 62 },
         }}),
+        // Slot 'onMessageContextMenu'
+        QtMocHelpers::SlotData<void(const QPoint &)>(63, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 64, 65 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -294,6 +301,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 34: _t->onUserProfileFetched((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 35: _t->onUserProfileFetchFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 36: _t->onMessageProfileRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 37: _t->onMessageContextMenu((*reinterpret_cast<std::add_pointer_t<QPoint>>(_a[1]))); break;
         default: ;
         }
     }
@@ -318,14 +326,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 37)
+        if (_id < 38)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 37;
+        _id -= 38;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 37)
+        if (_id < 38)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 37;
+        _id -= 38;
     }
     return _id;
 }

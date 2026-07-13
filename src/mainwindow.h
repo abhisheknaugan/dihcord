@@ -80,6 +80,7 @@ private slots:
     void onUserProfileFetched(const QJsonObject &user);
     void onUserProfileFetchFailed(const QString &reason);
     void onMessageProfileRequested(const QString &userId);
+    void onMessageContextMenu(const QPoint &pos);
 
 private:
     void populateChannelsForGuild(const QString &guildId);
