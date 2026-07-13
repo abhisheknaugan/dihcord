@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\RipcordAlt.dir/objects.a
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\RipcordAlt.dir/objects.a @CMakeFiles\RipcordAlt.dir\objects1.rsp
+C:\Qt\Tools\mingw1310_64\bin\g++.exe -g -mwindows -Wl,--whole-archive CMakeFiles\RipcordAlt.dir/objects.a -Wl,--no-whole-archive -o RipcordAlt.exe -Wl,--out-implib,libRipcordAlt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\RipcordAlt.dir\linkLibs.rsp
