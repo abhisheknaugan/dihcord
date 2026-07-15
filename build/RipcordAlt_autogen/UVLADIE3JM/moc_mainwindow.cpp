@@ -103,7 +103,12 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "userId",
         "onMessageContextMenu",
         "QPoint",
-        "pos"
+        "pos",
+        "onTypingStarted",
+        "onTypingTextChanged",
+        "onClearTypingLabel",
+        "onPinnedMessagesClicked",
+        "onPinnedMessagesFetched"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -241,6 +246,20 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(const QPoint &)>(63, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { 0x80000000 | 64, 65 },
         }}),
+        // Slot 'onTypingStarted'
+        QtMocHelpers::SlotData<void(const QJsonObject &)>(66, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 7, 41 },
+        }}),
+        // Slot 'onTypingTextChanged'
+        QtMocHelpers::SlotData<void()>(67, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onClearTypingLabel'
+        QtMocHelpers::SlotData<void()>(68, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onPinnedMessagesClicked'
+        QtMocHelpers::SlotData<void()>(69, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onPinnedMessagesFetched'
+        QtMocHelpers::SlotData<void(const QJsonArray &)>(70, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 20, 21 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -302,6 +321,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 35: _t->onUserProfileFetchFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 36: _t->onMessageProfileRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 37: _t->onMessageContextMenu((*reinterpret_cast<std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 38: _t->onTypingStarted((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 39: _t->onTypingTextChanged(); break;
+        case 40: _t->onClearTypingLabel(); break;
+        case 41: _t->onPinnedMessagesClicked(); break;
+        case 42: _t->onPinnedMessagesFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
         default: ;
         }
     }
@@ -326,14 +350,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 38)
+        if (_id < 43)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 38;
+        _id -= 43;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 38)
+        if (_id < 43)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 38;
+        _id -= 43;
     }
     return _id;
 }

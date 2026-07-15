@@ -1,75 +1,83 @@
-22:46:42.076  connectGateway() called
-22:46:42.495  WebSocket connected (waiting for Hello)
-22:46:42.495  Received Hello, heartbeat_interval=41250ms, sending Identify
-22:46:42.495  Sending Identify (with capabilities flag)
-22:46:44.776  READY received - 28 guilds in payload
-22:46:44.776    guild 215424443005009920 - unavailable=false, channels=250
-22:46:44.776    guild 281533815824973824 - unavailable=false, channels=66
-22:46:44.776    guild 281648235557421056 - unavailable=false, channels=179
-22:46:44.776    guild 550389429567750155 - unavailable=false, channels=306
-22:46:44.776    guild 733979275874664449 - unavailable=false, channels=78
-22:46:44.776    guild 800906094729101353 - unavailable=false, channels=366
-22:46:44.776    guild 872845133379407903 - unavailable=false, channels=120
-22:46:44.776    guild 891551837650550784 - unavailable=false, channels=110
-22:46:44.776    guild 905573082733895690 - unavailable=false, channels=67
-22:46:44.776    guild 916193307909038141 - unavailable=false, channels=37
-22:46:44.776    guild 926167772659073134 - unavailable=false, channels=13
-22:46:44.776    guild 939936568653799534 - unavailable=false, channels=104
-22:46:44.776    guild 968714656405418125 - unavailable=false, channels=48
-22:46:44.776    guild 1001033089943867402 - unavailable=false, channels=46
-22:46:44.776    guild 1023226293258571877 - unavailable=false, channels=52
-22:46:44.776    guild 1065600332215889920 - unavailable=false, channels=26
-22:46:44.776    guild 1102888045507780660 - unavailable=false, channels=36
-22:46:44.776    guild 1107004701905539182 - unavailable=false, channels=74
-22:46:44.776    guild 1110317468829876234 - unavailable=false, channels=82
-22:46:44.776    guild 1120711931670577203 - unavailable=false, channels=137
-22:46:44.776    guild 1202259776176926811 - unavailable=false, channels=72
-22:46:44.776    guild 1207617001527451648 - unavailable=false, channels=417
-22:46:44.776    guild 1212486919267819601 - unavailable=false, channels=119
-22:46:44.776    guild 1228614769276354600 - unavailable=false, channels=12
-22:46:44.776    guild 1255800194642219028 - unavailable=false, channels=67
-22:46:44.776    guild 1264265327894593676 - unavailable=false, channels=69
-22:46:44.776    guild 1266005827781656647 - unavailable=false, channels=50
-22:46:44.776    guild 1505670589778759701 - unavailable=false, channels=20
-22:46:44.776  28 of 28 guilds were immediately available from READY
-22:46:44.783  Dispatch event (ignored): READY_SUPPLEMENTAL
-22:46:44.783  Dispatch event (ignored): SESSIONS_REPLACE
-22:46:45.390  Dispatch: VOICE_STATE_UPDATE (session_id=0a6fb9ad34fa221e1fdd1707348db52c)
-22:46:45.711  Dispatch event (ignored): GUILD_MEMBER_UPDATE
-22:46:47.465  Dispatch: VOICE_STATE_UPDATE (session_id=a48a5d07caa393007f7e9347580cf89a)
-22:46:48.213  Dispatch event (ignored): CHANNEL_DELETE
-22:46:52.200  Dispatch event (ignored): CHANNEL_DELETE
-22:46:57.294  Dispatch: VOICE_STATE_UPDATE (session_id=5b13f651eca80c11775103c853594bf9)
-22:47:09.048  Dispatch event (ignored): MESSAGE_UPDATE
-22:47:09.535  Dispatch event (ignored): PASSIVE_UPDATE_V1
-22:47:11.770  Dispatch: VOICE_STATE_UPDATE (session_id=c4b16fa0dcf1ac32de432fc874ee6f53)
-22:47:11.981  Dispatch event (ignored): PASSIVE_UPDATE_V1
-22:47:13.861  Dispatch event (ignored): PASSIVE_UPDATE_V1
-22:47:22.230  Dispatch: VOICE_STATE_UPDATE (session_id=c4b16fa0dcf1ac32de432fc874ee6f53)
-22:47:26.231  Dispatch event (ignored): CHANNEL_DELETE
-22:47:28.819  Dispatch: VOICE_STATE_UPDATE (session_id=e1babd77900983c50e7b56b6c8e9267a)
-22:47:33.277  Dispatch event (ignored): CHANNEL_CREATE
-22:47:34.186  Dispatch event (ignored): CHANNEL_UPDATE
-22:47:34.524  Dispatch: VOICE_STATE_UPDATE (session_id=a7f5b80eec973bf6fbb4b85af788162c)
-22:47:38.088  Dispatch: VOICE_STATE_UPDATE (session_id=8e1ae18b68b25b3e2abd8628e1c3b7ad)
-22:47:38.387  Dispatch event (ignored): CHANNEL_CREATE
-22:47:43.818  Dispatch event (ignored): CHANNEL_CREATE
-22:47:49.537  Dispatch: VOICE_STATE_UPDATE (session_id=1770b82d3f414b934886bc300f81e16a)
-22:47:49.565  Dispatch: VOICE_STATE_UPDATE (session_id=4d281461d67552769f41e3dff8322ebf)
-22:47:50.234  Dispatch event (ignored): CHANNEL_DELETE
-22:47:57.582  Dispatch event (ignored): MESSAGE_UPDATE
-22:48:05.924  Dispatch: VOICE_STATE_UPDATE (session_id=4d281461d67552769f41e3dff8322ebf)
-22:48:09.142  Dispatch: VOICE_STATE_UPDATE (session_id=1770b82d3f414b934886bc300f81e16a)
-22:48:12.320  Dispatch event (ignored): PASSIVE_UPDATE_V1
-22:48:14.332  Dispatch event (ignored): CHANNEL_DELETE
-22:48:18.809  Dispatch event (ignored): PASSIVE_UPDATE_V1
-22:48:19.082  Dispatch event (ignored): CHANNEL_CREATE
-22:48:24.358  Dispatch: VOICE_STATE_UPDATE (session_id=0a6fb9ad34fa221e1fdd1707348db52c)
-22:48:29.541  Dispatch: VOICE_STATE_UPDATE (session_id=67d4ec34dc1ae4429c893a2b22001aff)
-22:48:31.532  Dispatch event (ignored): CHANNEL_CREATE
-22:48:33.245  Dispatch: VOICE_STATE_UPDATE (session_id=1770b82d3f414b934886bc300f81e16a)
-22:48:34.292  Dispatch event (ignored): PASSIVE_UPDATE_V1
-22:48:34.730  Dispatch: VOICE_STATE_UPDATE (session_id=c3684af157636ebc45ea1210d0758a7e)
-22:48:35.042  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
-22:48:42.018  Dispatch: VOICE_STATE_UPDATE (session_id=e3608e36697f9d5a4865ca45948ff3e0)
-22:48:43.982  Dispatch: VOICE_STATE_UPDATE (session_id=1770b82d3f414b934886bc300f81e16a)
+15:54:22.496  connectGateway() called
+15:54:22.917  WebSocket connected (waiting for Hello)
+15:54:22.917  Received Hello, heartbeat_interval=41250ms, sending Identify
+15:54:22.917  Sending Identify (with capabilities flag)
+15:54:25.721  READY received - 28 guilds in payload
+15:54:25.721    guild 215424443005009920 - unavailable=false, channels=250
+15:54:25.721    guild 281533815824973824 - unavailable=false, channels=66
+15:54:25.721    guild 281648235557421056 - unavailable=false, channels=179
+15:54:25.721    guild 550389429567750155 - unavailable=false, channels=295
+15:54:25.721    guild 733979275874664449 - unavailable=false, channels=79
+15:54:25.723    guild 800906094729101353 - unavailable=false, channels=365
+15:54:25.723    guild 872845133379407903 - unavailable=false, channels=120
+15:54:25.723    guild 891551837650550784 - unavailable=false, channels=110
+15:54:25.723    guild 905573082733895690 - unavailable=false, channels=70
+15:54:25.723    guild 916193307909038141 - unavailable=false, channels=37
+15:54:25.723    guild 926167772659073134 - unavailable=false, channels=13
+15:54:25.723    guild 939936568653799534 - unavailable=false, channels=104
+15:54:25.723    guild 968714656405418125 - unavailable=false, channels=48
+15:54:25.723    guild 1001033089943867402 - unavailable=false, channels=46
+15:54:25.723    guild 1023226293258571877 - unavailable=false, channels=52
+15:54:25.723    guild 1065600332215889920 - unavailable=false, channels=26
+15:54:25.723    guild 1102888045507780660 - unavailable=false, channels=36
+15:54:25.723    guild 1107004701905539182 - unavailable=false, channels=74
+15:54:25.723    guild 1110317468829876234 - unavailable=false, channels=80
+15:54:25.723    guild 1120711931670577203 - unavailable=false, channels=140
+15:54:25.723    guild 1202259776176926811 - unavailable=false, channels=72
+15:54:25.723    guild 1207617001527451648 - unavailable=false, channels=417
+15:54:25.723    guild 1212486919267819601 - unavailable=false, channels=119
+15:54:25.723    guild 1228614769276354600 - unavailable=false, channels=12
+15:54:25.723    guild 1255800194642219028 - unavailable=false, channels=67
+15:54:25.723    guild 1264265327894593676 - unavailable=false, channels=69
+15:54:25.723    guild 1266005827781656647 - unavailable=false, channels=50
+15:54:25.723    guild 1505670589778759701 - unavailable=false, channels=20
+15:54:25.723  28 of 28 guilds were immediately available from READY
+15:54:25.728  Dispatch event (ignored): READY_SUPPLEMENTAL
+15:54:25.728  Dispatch event (ignored): SESSIONS_REPLACE
+15:54:40.946  Dispatch event (ignored): MESSAGE_UPDATE
+15:54:42.084  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
+15:54:42.117  Dispatch event (ignored): MESSAGE_UPDATE
+15:54:49.780  Dispatch event (ignored): CHANNEL_DELETE
+15:54:55.942  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:55:00.966  Dispatch event (ignored): CHANNEL_UPDATE
+15:55:09.922  Dispatch: VOICE_STATE_UPDATE (session_id=0f0fd181bde23aeb95b6efabf5a5bbd9)
+15:55:11.284  Dispatch event (ignored): MESSAGE_UPDATE
+15:55:12.478  Dispatch: VOICE_STATE_UPDATE (session_id=0f0fd181bde23aeb95b6efabf5a5bbd9)
+15:55:15.880  Dispatch event (ignored): MESSAGE_REACTION_ADD
+15:55:17.619  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:55:19.981  Dispatch event (ignored): MESSAGE_UPDATE
+15:55:21.880  Dispatch event (ignored): CHANNEL_UPDATE
+15:55:25.222  Dispatch event (ignored): MESSAGE_UPDATE
+15:55:27.911  Dispatch: VOICE_STATE_UPDATE (session_id=0f0fd181bde23aeb95b6efabf5a5bbd9)
+15:55:27.982  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:55:30.047  Dispatch: VOICE_STATE_UPDATE (session_id=0f0fd181bde23aeb95b6efabf5a5bbd9)
+15:55:36.391  Dispatch event (ignored): CHANNEL_CREATE
+15:55:36.506  Dispatch event (ignored): MESSAGE_REACTION_ADD
+15:55:36.659  Dispatch event (ignored): MESSAGE_REACTION_REMOVE
+15:55:39.017  Dispatch event (ignored): MESSAGE_UPDATE
+15:55:39.603  Dispatch event (ignored): MESSAGE_REACTION_ADD
+15:55:40.808  Dispatch event (ignored): MESSAGE_REACTION_REMOVE
+15:55:41.076  Dispatch event (ignored): MESSAGE_REACTION_ADD
+15:55:43.348  Dispatch event (ignored): MESSAGE_UPDATE
+15:55:45.101  Dispatch: VOICE_STATE_UPDATE (session_id=f6deab441daeff896937a6778753a080)
+15:55:45.162  Dispatch event (ignored): MESSAGE_REACTION_REMOVE
+15:55:49.208  Dispatch event (ignored): MESSAGE_DELETE
+15:55:51.699  Dispatch: VOICE_STATE_UPDATE (session_id=019367b126b9ac989871407c401ff1aa)
+15:55:54.528  Dispatch event (ignored): CHANNEL_DELETE
+15:55:55.489  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:55:55.753  Dispatch event (ignored): MESSAGE_DELETE
+15:56:00.345  Dispatch event (ignored): MESSAGE_DELETE
+15:56:00.826  Dispatch event (ignored): MESSAGE_DELETE
+15:56:01.467  Dispatch event (ignored): MESSAGE_DELETE
+15:56:04.599  Dispatch event (ignored): CHANNEL_CREATE
+15:56:05.626  Dispatch event (ignored): MESSAGE_DELETE
+15:56:06.112  Dispatch event (ignored): CHANNEL_UPDATE
+15:56:07.405  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:56:09.354  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:56:12.718  Sending GuildSubscriptions (opcode 14) for guild 939936568653799534
+15:56:12.775  Dispatch: VOICE_STATE_UPDATE (session_id=765eea5274b4ecd1e35427946ec45a73)
+15:56:13.314  Dispatch event (ignored): GUILD_MEMBER_UPDATE
+15:56:18.660  Dispatch event (ignored): CHANNEL_DELETE
+15:56:20.489  Dispatch event (ignored): MESSAGE_UPDATE
+15:56:22.608  Dispatch event (ignored): PASSIVE_UPDATE_V1
+15:56:28.660  Dispatch event (ignored): PASSIVE_UPDATE_V1

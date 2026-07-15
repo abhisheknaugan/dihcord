@@ -1,0 +1,5 @@
+C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/CMakeFiles/RipcordAlt.dir
+C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/CMakeFiles/edit_cache.dir
+C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/CMakeFiles/rebuild_cache.dir
+C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/CMakeFiles/RipcordAlt_autogen_timestamp_deps.dir
+C:/Users/abhis/Downloads/ripcord-alt/ripcord-alt/build/CMakeFiles/RipcordAlt_autogen.dir

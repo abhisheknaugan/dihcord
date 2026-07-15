@@ -73,7 +73,8 @@ template <> constexpr inline auto RestClient::qt_create_metaobjectdata<qt_meta_t
         "dmOpened",
         "channel",
         "userProfileFetched",
-        "userProfileFetchFailed"
+        "userProfileFetchFailed",
+        "pinnedMessagesFetched"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -155,6 +156,10 @@ template <> constexpr inline auto RestClient::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SignalData<void(const QString &)>(35, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 8 },
         }}),
+        // Signal 'pinnedMessagesFetched'
+        QtMocHelpers::SignalData<void(const QJsonArray &)>(36, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 14, 15 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -198,6 +203,7 @@ void RestClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 17: _t->dmOpened((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 18: _t->userProfileFetched((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 19: _t->userProfileFetchFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 20: _t->pinnedMessagesFetched((*reinterpret_cast<std::add_pointer_t<QJsonArray>>(_a[1]))); break;
         default: ;
         }
     }
@@ -242,6 +248,8 @@ void RestClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             return;
         if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QString & )>(_a, &RestClient::userProfileFetchFailed, 19))
             return;
+        if (QtMocHelpers::indexOfMethod<void (RestClient::*)(const QJsonArray & )>(_a, &RestClient::pinnedMessagesFetched, 20))
+            return;
     }
 }
 
@@ -264,14 +272,14 @@ int RestClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 21;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 20;
+        _id -= 21;
     }
     return _id;
 }
@@ -394,5 +402,11 @@ void RestClient::userProfileFetched(const QJsonObject & _t1)
 void RestClient::userProfileFetchFailed(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 19, nullptr, _t1);
+}
+
+// SIGNAL 20
+void RestClient::pinnedMessagesFetched(const QJsonArray & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 20, nullptr, _t1);
 }
 QT_WARNING_POP

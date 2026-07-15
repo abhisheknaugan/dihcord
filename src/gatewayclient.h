@@ -53,7 +53,8 @@ signals:
 
     // Raw passthrough - caller filters by user_id/guild_id as needed.
     void voiceStateUpdate(const QJsonObject &data);   // dispatch: VOICE_STATE_UPDATE
-    void voiceServerUpdate(const QJsonObject &data);  // dispatch: VOICE_SERVER_UPDATE
+    void voiceServerUpdate(const QJsonObject &data);
+    void typingStarted(const QJsonObject &data);  // dispatch: VOICE_SERVER_UPDATE
 
 private slots:
     void onSocketConnected();

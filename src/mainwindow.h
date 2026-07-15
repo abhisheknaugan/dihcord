@@ -12,6 +12,8 @@
 #include "serverprofiledialog.h"
 #include "voiceclient.h"
 #include "voicesettingsdialog.h"
+#include <QDateTime>
+#include <QTimer>
 
 class QListWidget;
 class QListWidgetItem;
@@ -81,6 +83,11 @@ private slots:
     void onUserProfileFetchFailed(const QString &reason);
     void onMessageProfileRequested(const QString &userId);
     void onMessageContextMenu(const QPoint &pos);
+    void onTypingStarted(const QJsonObject &data);
+    void onTypingTextChanged();
+    void onClearTypingLabel();
+    void onPinnedMessagesClicked();
+    void onPinnedMessagesFetched(const QJsonArray &messages);
 
 private:
     void populateChannelsForGuild(const QString &guildId);
@@ -118,6 +125,8 @@ private:
     // Member list panel (per server) + server info button
     QListWidget *m_memberList;
     QPushButton *m_serverInfoButton;
+    QLabel *m_typingLabel;
+    QPushButton *m_pinnedButton;
 
     QString m_token;
     QString m_selectedChannelId;
@@ -127,7 +136,9 @@ private:
     QMap<QString, QJsonArray> m_guildChannels;
     QMap<QString, QJsonArray> m_guildVoiceStates;
     QMap<QString, QJsonArray> m_guildMembers;
-    QMap<QString, QJsonObject> m_fullGuildData; // for server info popup // guildId -> members array from GUILD_CREATE
+    QMap<QString, QJsonObject> m_fullGuildData;
+    QTimer *m_typingClearTimer;
+    qint64 m_lastTypingSentMs = 0; // for server info popup // guildId -> members array from GUILD_CREATE
     QJsonArray m_friendsList;
     QJsonArray m_dmChannels;
     bool m_viewingFriends = false; // guildId -> voice_states array from GUILD_CREATE/READY

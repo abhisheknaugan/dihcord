@@ -5,6 +5,7 @@
 #include <QClipboard>
 #include <QComboBox>
 #include <QDateTime>
+#include <QDialog>
 #include <QFile>
 #include <QHBoxLayout>
 #include <QInputDialog>
@@ -77,15 +78,28 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     connect(m_messageView, &QListWidget::customContextMenuRequested, this, &MainWindow::onMessageContextMenu);
     messagePaneLayout->addWidget(m_messageView);
 
+    m_typingLabel = new QLabel();
+    m_typingLabel->setStyleSheet("color: gray; font-style: italic; font-size: 11px;");
+    messagePaneLayout->addWidget(m_typingLabel);
+
     auto *inputRow = new QHBoxLayout();
     m_messageInput = new QLineEdit();
     m_messageInput->setPlaceholderText("Select a channel to start typing...");
     m_messageInput->setEnabled(false);
+    connect(m_messageInput, &QLineEdit::textEdited, this, &MainWindow::onTypingTextChanged);
     m_sendButton = new QPushButton("Send");
     m_sendButton->setEnabled(false);
+    m_pinnedButton = new QPushButton("Pinned");
+    m_pinnedButton->setEnabled(false);
+    connect(m_pinnedButton, &QPushButton::clicked, this, &MainWindow::onPinnedMessagesClicked);
     inputRow->addWidget(m_messageInput);
     inputRow->addWidget(m_sendButton);
+    inputRow->addWidget(m_pinnedButton);
     messagePaneLayout->addLayout(inputRow);
+
+    m_typingClearTimer = new QTimer(this);
+    m_typingClearTimer->setSingleShot(true);
+    connect(m_typingClearTimer, &QTimer::timeout, this, &MainWindow::onClearTypingLabel);
 
     splitter->addWidget(m_guildList);
     splitter->addWidget(m_channelList);
@@ -169,6 +183,8 @@ MainWindow::MainWindow(const QString &token, QWidget *parent)
     // --- Voice wiring (signaling only, Phase A) ---
     connect(m_gateway, &GatewayClient::voiceStateUpdate, this, &MainWindow::onVoiceStateUpdate);
     connect(m_gateway, &GatewayClient::voiceServerUpdate, this, &MainWindow::onVoiceServerUpdate);
+    connect(m_gateway, &GatewayClient::typingStarted, this, &MainWindow::onTypingStarted);
+    connect(m_rest, &RestClient::pinnedMessagesFetched, this, &MainWindow::onPinnedMessagesFetched);
     connect(m_voiceClient, &VoiceClient::voiceHandshakeComplete, this, &MainWindow::onVoiceHandshakeComplete);
     connect(m_voiceClient, &VoiceClient::voiceError, this, &MainWindow::onVoiceError);
     connect(m_voiceClient, &VoiceClient::voiceLog, this, &MainWindow::onVoiceLog);
@@ -335,6 +351,8 @@ void MainWindow::onChannelSelected(QListWidgetItem *item)
     m_messageView->addItem("Loading messages...");
     m_messageInput->setEnabled(true);
     m_sendButton->setEnabled(true);
+    m_pinnedButton->setEnabled(true);
+    m_typingLabel->clear();
     m_messageInput->setFocus();
 
     m_rest->fetchMessages(m_token, m_selectedChannelId);
@@ -694,6 +712,8 @@ void MainWindow::openDMChannel(const QJsonObject &dmChannel)
     m_messageView->addItem("Loading messages...");
     m_messageInput->setEnabled(true);
     m_sendButton->setEnabled(true);
+    m_pinnedButton->setEnabled(true);
+    m_typingLabel->clear();
     m_messageInput->setFocus();
     m_rest->fetchMessages(m_token, m_selectedChannelId);
 }
@@ -817,4 +837,81 @@ void MainWindow::onMessageContextMenu(const QPoint &pos)
             delete item; // remove from view immediately, don't wait for a gateway echo
         }
     }
+}
+
+// ---------------- Typing indicators ----------------
+
+void MainWindow::onTypingStarted(const QJsonObject &data)
+{
+    if (data.value("channel_id").toString() != m_selectedChannelId) {
+        return;
+    }
+    QString userId = data.value("user_id").toString();
+    if (userId == m_currentUser.value("id").toString()) {
+        return; // don't show our own typing back to ourselves
+    }
+
+    QString displayName = data.value("member").toObject().value("nick").toString();
+    if (displayName.isEmpty()) {
+        displayName = data.value("username").toString(); // not always present, best-effort
+    }
+    if (displayName.isEmpty()) {
+        displayName = "Someone";
+    }
+
+    m_typingLabel->setText(displayName + " is typing...");
+    m_typingClearTimer->start(8000); // Discord's own clients treat ~8s of silence as "stopped typing"
+}
+
+void MainWindow::onClearTypingLabel()
+{
+    m_typingLabel->clear();
+}
+
+void MainWindow::onTypingTextChanged()
+{
+    if (m_selectedChannelId.isEmpty()) return;
+
+    qint64 now = QDateTime::currentMSecsSinceEpoch();
+    if (now - m_lastTypingSentMs < 8000) {
+        return; // Discord's own clients only send this every ~8-10s while actively typing, not per keystroke
+    }
+    m_lastTypingSentMs = now;
+    m_rest->sendTypingIndicator(m_token, m_selectedChannelId);
+}
+
+// ---------------- Pinned messages ----------------
+
+void MainWindow::onPinnedMessagesClicked()
+{
+    if (m_selectedChannelId.isEmpty()) return;
+    m_rest->fetchPinnedMessages(m_token, m_selectedChannelId);
+}
+
+void MainWindow::onPinnedMessagesFetched(const QJsonArray &messages)
+{
+    auto *dialog = new QDialog(this);
+    dialog->setWindowTitle("Pinned Messages");
+    dialog->setMinimumSize(360, 400);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+
+    auto *layout = new QVBoxLayout(dialog);
+    auto *list = new QListWidget();
+    layout->addWidget(list);
+
+    if (messages.isEmpty()) {
+        list->addItem("No pinned messages in this channel.");
+    } else {
+        for (const QJsonValue &v : messages) {
+            QJsonObject msg = v.toObject();
+            QString author = msg.value("author").toObject().value("username").toString();
+            QString content = msg.value("content").toString();
+            if (content.isEmpty()) {
+                content = "(attachment/embed only)";
+            }
+            list->addItem(QString("%1: %2").arg(author, content));
+        }
+    }
+
+    dialog->show();
 }

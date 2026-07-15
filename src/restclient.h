@@ -89,6 +89,7 @@ signals:
     void dmOpened(const QJsonObject &channel);
     void userProfileFetched(const QJsonObject &user);
     void userProfileFetchFailed(const QString &reason);
+    void pinnedMessagesFetched(const QJsonArray &messages);
 
 private:
     void handleLoginReply(QNetworkReply *reply);

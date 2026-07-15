@@ -284,3 +284,28 @@ void RestClient::deleteMessage(const QString &token, const QString &channelId, c
         reply->deleteLater();
     });
 }
+
+void RestClient::sendTypingIndicator(const QString &token, const QString &channelId)
+{
+    QUrl url(QString("%1/channels/%2/typing").arg(kApiBase, channelId));
+    QNetworkRequest req(url);
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QNetworkReply *reply = m_net->post(req, QByteArray());
+    connect(reply, &QNetworkReply::finished, this, [reply]() {
+        reply->deleteLater();
+    });
+}
+
+void RestClient::fetchPinnedMessages(const QString &token, const QString &channelId)
+{
+    QUrl url(QString("%1/channels/%2/pins").arg(kApiBase, channelId));
+    QNetworkRequest req(url);
+    req.setRawHeader("Authorization", token.toUtf8());
+
+    QNetworkReply *reply = m_net->get(req);
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        emit pinnedMessagesFetched(QJsonDocument::fromJson(reply->readAll()).array());
+        reply->deleteLater();
+    });
+}

@@ -54,6 +54,7 @@ template <> constexpr inline auto GatewayClient::qt_create_metaobjectdata<qt_met
         "voiceStateUpdate",
         "data",
         "voiceServerUpdate",
+        "typingStarted",
         "onSocketConnected",
         "onSocketDisconnected",
         "onTextMessageReceived",
@@ -89,16 +90,20 @@ template <> constexpr inline auto GatewayClient::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SignalData<void(const QJsonObject &)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 4, 14 },
         }}),
+        // Signal 'typingStarted'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 4, 14 },
+        }}),
         // Slot 'onSocketConnected'
-        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSocketDisconnected'
         QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onSocketDisconnected'
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onTextMessageReceived'
-        QtMocHelpers::SlotData<void(const QString &)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QString &)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 9 },
         }}),
         // Slot 'sendHeartbeat'
-        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -130,10 +135,11 @@ void GatewayClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 5: _t->gatewayClosed(); break;
         case 6: _t->voiceStateUpdate((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 7: _t->voiceServerUpdate((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
-        case 8: _t->onSocketConnected(); break;
-        case 9: _t->onSocketDisconnected(); break;
-        case 10: _t->onTextMessageReceived((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 11: _t->sendHeartbeat(); break;
+        case 8: _t->typingStarted((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 9: _t->onSocketConnected(); break;
+        case 10: _t->onSocketDisconnected(); break;
+        case 11: _t->onTextMessageReceived((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 12: _t->sendHeartbeat(); break;
         default: ;
         }
     }
@@ -153,6 +159,8 @@ void GatewayClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         if (QtMocHelpers::indexOfMethod<void (GatewayClient::*)(const QJsonObject & )>(_a, &GatewayClient::voiceStateUpdate, 6))
             return;
         if (QtMocHelpers::indexOfMethod<void (GatewayClient::*)(const QJsonObject & )>(_a, &GatewayClient::voiceServerUpdate, 7))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (GatewayClient::*)(const QJsonObject & )>(_a, &GatewayClient::typingStarted, 8))
             return;
     }
 }
@@ -176,14 +184,14 @@ int GatewayClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 13)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }
@@ -234,5 +242,11 @@ void GatewayClient::voiceStateUpdate(const QJsonObject & _t1)
 void GatewayClient::voiceServerUpdate(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1);
+}
+
+// SIGNAL 8
+void GatewayClient::typingStarted(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 8, nullptr, _t1);
 }
 QT_WARNING_POP

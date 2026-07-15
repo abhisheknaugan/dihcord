@@ -153,6 +153,8 @@ void GatewayClient::handlePayload(const QJsonObject &payload)
         } else if (eventType == "VOICE_SERVER_UPDATE") {
             log("Dispatch: VOICE_SERVER_UPDATE (endpoint=" + data.value("endpoint").toString() + ")");
             emit voiceServerUpdate(data);
+        } else if (eventType == "TYPING_START") {
+            emit typingStarted(data);
         } else if (!eventType.isEmpty()) {
             log("Dispatch event (ignored): " + eventType);
         }
